@@ -2,7 +2,8 @@ vpath %.exe bin/
 vpath %.dll bin/
 vpath %.nim src/
 
-NIMFLAGS = -d=release -d=mingw -d=strip --opt=size
+#NIMFLAGS = -d=danger -d=mingw -d=strip --passc=-flto --passl=-flto --opt=size
+NIMFLAGS = -d=debug -d=mingw
 
 SRCS_BINS = $(notdir $(wildcard src/*_bin.nim))
 SRCS_LIBS = $(notdir $(wildcard src/*_lib.nim))
@@ -11,7 +12,11 @@ DLLS = $(patsubst %.nim,%.dll,$(SRCS_LIBS))
 
 .PHONY: clean
 
-default: $(BINS) $(DLLS)
+default: build
+
+build: $(BINS) $(DLLS)
+
+rebuild: clean build
 
 clean:
 	rm -rf bin/*.exe

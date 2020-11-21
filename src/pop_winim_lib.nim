@@ -3,7 +3,7 @@ import winim/lean
 proc NimMain() {.cdecl, importc.}
 
 proc DllMain(hinstDLL: HINSTANCE, fdwReason: DWORD, lpvReserved: LPVOID) : BOOL {.stdcall, exportc, dynlib.} =
-  NimMain()
+  NimMain() # You must manually import and start Nim's garbage collector if you define you're own DllMain
   
   if fdwReason == DLL_PROCESS_ATTACH:
     MessageBox(0, "Hello, world !", "Nim is Powerful", 0)
