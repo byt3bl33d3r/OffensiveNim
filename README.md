@@ -12,7 +12,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 - Since it doesn't rely on a VM/runtime does not produce what I like to call "T H I C C malwarez" as supposed to other languages (e.g. Golang)
 - Python inspired syntax, allows rapid native payload creation & prototyping.
 - Has **extremely** mature [FFI](https://nim-lang.org/docs/manual.html#foreign-function-interface) (Foreign Function Interface) capabilities.
-- Avoids making you actually write in C/C++.
+- Avoids making you actually write in C/C++ and subsequently avoids introducing a lot of security issues into your software.
 - Super easy cross compilation to Windows from Nix/MacOS, only requires you to install the `mingw` toolchain and passing a single flag to the nim compiler.
 - The Nim compiler and the generated executables support all major platforms like Windows, Linux, BSD and macOS. Can even compile to Nintendo switch , IOS & Android. See the cross-compilation section in the [Nim compiler usage guide](https://nim-lang.github.io/Nim/nimc.html#crossminuscompilation)
 - You could *technically* write your implant and c2 backend both in Nim as you can compile your code directly to Javascript. Even has some [initial support for WebAssembly's](https://forum.nim-lang.org/t/4779) 
