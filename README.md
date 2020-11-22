@@ -6,6 +6,26 @@
 
 My experiments in weaponizing [Nim](https://nim-lang.org/) for implant development and general offensive operations.
 
+## Table of Contents
+
+- [OffensiveNim](#offensivenim)
+  * [Why Nim?](#why-nim)
+  * [Examples in this repo](#examples-in-this-repo)
+  * [Compiling the examples](#compiling-the-examples-in-this-repo)
+  * [Cross Compiling](#cross-compiling)
+  * [Interfacing with C/C++](#interfacing-with-cc)
+  * [Creating Windows DLLs with an exported DllMain](#creating-windows-dlls-with-an-exported-dllmain)
+  * [Optimizing executables for size](#optimizing-executables-for-size)
+  * [Executable size difference with the Winim Library](#executable-size-difference-when-using-the-winim-library-vs-without)
+  * [Opsec Considirations](#opsec-considerations)
+  * [Converting C Code to Nim](#converting-c-code-to-nim)
+  * [Language Bridges](#language-bridges)
+  * [Debugging](#debugging)
+  * [Setting up a dev environment](#setting-up-a-dev-environment)
+  * [Pitfalls I found myself falling into](#pitfalls-i-found-myself-falling-into)
+  * [Interesting Nim Libraries](#interesting-nim-libraries)
+  * [Nim for Implant Dev Links](#nim-for-implant-dev-links)
+
 ## Why Nim?
 
 - Compiles *directly* to C, C++, Objective-C and Javascript.
@@ -163,13 +183,26 @@ byt3bl33d3r@ecl1ps3 OffensiveNim % ls -lah bin
 
 ## Opsec Considerations
 
-Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show yup in the executables static imports:
+Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show up in the executables static imports (see [this blog post](https://secbytes.net/Implant-Roulette-Part-1:-Nimplant) for more on this):
 
 ![](https://user-images.githubusercontent.com/5151193/99911179-d0dd6000-2caf-11eb-933a-6a7ada510747.png)
 
-However, if you compile Nim source to a DLL, seems like you'll always have an exported `NimMain`, no matter if you specify your own `DllMain` or not (??). This could potentially be used as a signature, don't know how many shops are actually using Nim in their development stack. Definitely stands out.
+If you compile Nim source to a DLL, seems like you'll always have an exported `NimMain`, no matter if you specify your own `DllMain` or not (??). This could potentially be used as a signature, don't know how many shops are actually using Nim in their development stack. Definitely stands out.
 
 ![](https://user-images.githubusercontent.com/5151193/99911079-4563cf00-2caf-11eb-960d-e500534b56dd.png)
+
+## Converting C code to Nim
+
+https://github.com/nim-lang/c2nim
+
+Used it to translate a bunch of small C snippets, haven't tried anything major.
+
+## Language Bridges
+
+  - Python integration https://github.com/yglukhov/nimpy
+    * This is actually super interesting, [especially this part](https://github.com/yglukhov/nimpy/blob/master/nimpy/py_lib.nim#L330). With some modification could this load the PythonxXX.dll from memory?
+
+  - Jave VM integration: https://github.com/yglukhov/jnim
 
 ## Debugging
 
@@ -179,7 +212,7 @@ See [this blog post for more](https://nim-lang.org/blog/2017/10/02/documenting-p
 
 ## Setting up a dev environment
 
-VSCode has a Nim extension which works pretty well.
+VSCode has a Nim extension which works pretty well. This also seems to be the only option at this point.
 
 ## Pitfalls I found myself falling into
 
@@ -200,19 +233,6 @@ Byte array in Nim:
 ```nim
 var buf: array[295, byte] = [byte 0xfc,0x48,0x81,0xe4]
 ```
-
-## Converting C code to Nim
-
-https://github.com/nim-lang/c2nim
-
-Used it to translate a bunch of small C snippets, haven't tried anything major.
-
-## Language Bridges
-
-  - Python integration https://github.com/yglukhov/nimpy
-    * This is actually super interesting, [especially this part](https://github.com/yglukhov/nimpy/blob/master/nimpy/py_lib.nim#L330). With some modification could this load the PythonxXX.dll from memory?
-
-  - Jave VM integration: https://github.com/yglukhov/jnim
 
 ## Interesting Nim libraries
 
