@@ -1,6 +1,6 @@
 #[
 
-    You have 4 options (that I'm aware of at the time of writing) to make an HTTP request with Nim:
+    You have 4 options (that I'm aware of at the time of writing) to make an HTTP request with Nim from Windows:
 
     - Use Nim's builtin httpclient library (which has it's own HTTP implementation and uses raw sockets)
         - Warning: httpclient module currently doesn't perform cert validation, see https://nim-lang.org/docs/httpclient.html#sslslashtls-support

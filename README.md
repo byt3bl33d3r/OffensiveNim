@@ -31,8 +31,8 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `http_request_bin.nim` | Demonstrates a couple of ways of making HTTP requests |
 | `execute_sct_bin.nim` | `.sct` file Execution via `GetObject()` |
 | `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object | 
+| `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
 | `clr_bin.nim` | Hosts the CLR and executes .NET assemblies (**WIP, help appreciated**) | 
-| `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros (**WIP**) |
 | `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
 ## Compiling the examples in this repo
@@ -134,7 +134,7 @@ Taken from the [Nim's FAQ page](https://nim-lang.org/faq.html)
 
 For the biggest size decrease use the following flags `-d:danger -d:strip --opt:size`
 
-Additionally, I've found you can squeeze a few more bytes out by passing `--passc=-flto --passl=-flto` to the compiler. Also take at the `Makefile` in this repo.
+Additionally, I've found you can squeeze a few more bytes out by passing `--passc=-flto --passl=-flto` to the compiler. Also take a look at the `Makefile` in this repo.
 
 These flags decrease sizes **dramatically**: the shellcode injection example goes from 484.3 KB to 46.5 KB when cross-compiled from MacOSX!
 
@@ -222,7 +222,7 @@ Used it to translate a bunch of small C snippets, haven't tried anything major.
 - https://github.com/miere43/nim-registry
 - https://github.com/status-im/nim-daemon
 
-## "Nim for implant dev" links
+## Nim for implant dev links
 
 - https://secbytes.net/Implant-Roulette-Part-1:-Nimplant
 - https://securelist.com/zebrocys-multilanguage-malware-salad/90680/
