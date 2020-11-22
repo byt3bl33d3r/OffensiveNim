@@ -161,6 +161,16 @@ byt3bl33d3r@ecl1ps3 OffensiveNim % ls -lah bin
 -rwxr-xr-x  1 byt3bl33d3r  53K Nov 20 19:20 pop_winim_bin_64.exe
 ```
 
+## Opsec Considerations
+
+Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show yup in the executables static imports:
+
+![](https://user-images.githubusercontent.com/5151193/99911179-d0dd6000-2caf-11eb-933a-6a7ada510747.png)
+
+However, if you compile Nim source to a DLL, seems like you'll always have an exported `NimMain`, no matter if you specify your own `DllMain` or not (??). This could potentially be used as a signature, don't know how many shops are actually using Nim in their development stack. Definitely stands out.
+
+![](https://user-images.githubusercontent.com/5151193/99911079-4563cf00-2caf-11eb-960d-e500534b56dd.png)
+
 ## Debugging
 
 Use the `repr()` function in combination with `echo`, supports almost all (??) data types, even structs!
