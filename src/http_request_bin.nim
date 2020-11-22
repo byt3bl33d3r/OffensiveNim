@@ -1,4 +1,6 @@
 #[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
 
     You have 4 options (that I'm aware of at the time of writing) to make an HTTP request with Nim from Windows:
 

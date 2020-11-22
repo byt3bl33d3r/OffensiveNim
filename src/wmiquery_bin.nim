@@ -1,8 +1,11 @@
 #[
-  Winim's examples are extremely useful
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
 
-  Reference:
-    - https://github.com/khchen/winim/blob/df04327df3016888e43d01c464b008d619253198/examples/com/diskinfo.nim
+    Winim's examples are extremely useful
+
+    Reference:
+      - https://github.com/khchen/winim/blob/df04327df3016888e43d01c464b008d619253198/examples/com/diskinfo.nim
 ]#
 
 import winim/com

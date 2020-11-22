@@ -1,4 +1,7 @@
 #[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
     Enumerates all processes to find lsass.exe and creates a memorydump using MiniDumpWriteDump
 
     TO DO: Implement process id -> process name logic

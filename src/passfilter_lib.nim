@@ -1,4 +1,7 @@
 #[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
     Install with the passfilter.bat file here https://github.com/zerosum0x0/defcon-25-workshop/blob/master/src/passfilter/passfilter.bat
 
     Reference:

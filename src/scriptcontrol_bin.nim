@@ -1,6 +1,9 @@
 #[
-  Stolen from Winim's examples with a few modifications
-    - https://github.com/khchen/winim/blob/df04327df3016888e43d01c464b008d619253198/examples/com/MSScriptControl_ScriptControl.nim
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
+    Stolen from Winim's examples with a few modifications
+      - https://github.com/khchen/winim/blob/df04327df3016888e43d01c464b008d619253198/examples/com/MSScriptControl_ScriptControl.nim
 ]#
 
 import strformat

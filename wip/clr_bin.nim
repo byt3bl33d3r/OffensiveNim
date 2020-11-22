@@ -1,4 +1,7 @@
 #[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
     References:
         - https://blog.ropnop.com/hosting-clr-in-golang/#part-1---loading-a-managed-dll-from-disk
         - https://gist.github.com/xpn/e95a62c6afcf06ede52568fcd8187cc2

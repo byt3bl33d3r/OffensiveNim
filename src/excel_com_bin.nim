@@ -1,6 +1,8 @@
 #[
-    This is some funky shit.
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
 
+    This is some funky shit.
     Winim allows you to use COM objects like a script via the "comScript" macro.
 
     References:
