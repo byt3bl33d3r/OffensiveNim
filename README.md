@@ -47,12 +47,13 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `wmiquery_bin.nim` | Queries running processes and installed AVs using using WMI |
 | `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..| 
 | `passfilter_lib.nim` | Log password changes to a file by (ab)using a password complexity filter |
-| `minidump_bin.nim` | Creates a memory dump using `MiniDumpWriteDump` |
+| `minidump_bin.nim` | Creates a memory dump of lsass using `MiniDumpWriteDump` |
 | `http_request_bin.nim` | Demonstrates a couple of ways of making HTTP requests |
 | `execute_sct_bin.nim` | `.sct` file Execution via `GetObject()` |
 | `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object | 
 | `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
 | `clr_bin.nim` | Hosts the CLR and executes .NET assemblies (**WIP, help appreciated**) | 
+| `amsi_bypass_bin.nim` | Patches AMSI out of the current process (**WIP, help appreciated**) |
 | `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
 ## Compiling the examples in this repo
@@ -218,9 +219,9 @@ VSCode has a Nim extension which works pretty well. This also seems to be the on
 
 - When calling winapi's with Winim and trying to pass a null value, make sure you pass the `NULL` value (defined within the Winim library) as supposed Nim's builtin `nil` value. (Ugh)
 
-- To get the OS handle to the created file after calling `open()` on Windows, you need to call `f.getOsFileHandle()` and **not** `f.getFileHandle()` cause reasons.
+- To get the OS handle to the created file after calling `open()` on Windows, you need to call `f.getOsFileHandle()` **not** `f.getFileHandle()` cause reasons.
 
-- The Nim compiler does accept arguments in the form `-a=value` or `--arg=value` even tho if you look at the usage it only has arguments passed as `-a:value` or `--arg=value`. (Important for Makefiles)
+- The Nim compiler does accept arguments in the form `-a=value` or `--arg=value` even tho if you look at the usage it only has arguments passed as `-a:value` or `--arg:value`. (Important for Makefiles)
 
 - When defining a byte array, you also need to indicate at least in the first value that it's a byte array, bit weird but ok (https://forum.nim-lang.org/t/4322)
 
@@ -231,7 +232,7 @@ byte[] buf = new byte[5] {0xfc,0x48,0x81,0xe4,0xf0,0xff}
 
 Byte array in Nim:
 ```nim
-var buf: array[295, byte] = [byte 0xfc,0x48,0x81,0xe4]
+var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 ```
 
 ## Interesting Nim libraries

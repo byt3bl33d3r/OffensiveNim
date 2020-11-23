@@ -3,7 +3,7 @@ vpath %.dll bin/
 vpath %.nim src/
 
 #NIMFLAGS = -d=danger -d=mingw -d=strip --passc=-flto --passl=-flto --opt=size
-NIMFLAGS = -d=debug -d=mingw
+NIMFLAGS = -d=debug -d=mingw --embedsrc=on --hints=on
 
 SRCS_BINS = $(notdir $(wildcard src/*_bin.nim))
 SRCS_LIBS = $(notdir $(wildcard src/*_lib.nim))
