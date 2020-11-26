@@ -74,8 +74,8 @@ This repo was setup to cross-compile the example Nim source files to Windows fro
 You should now have the `nim` & `nimble` commands available, the former is the Nim compiler and the latter is Nim's package manager.
 
 Install the `Mingw` toolchain needed for cross-compilation to Windows (Not needed if you're compiling on Windows):
-- Nix: `apt-get install mingw`
-- MacOS: `brew install mingw`
+- Nix: `apt-get install mingw-w64`
+- MacOS: `brew install mingw-w64`
 
 Finally, install the magnificent [Winim](https://github.com/khchen/winim) library:
 
@@ -89,7 +89,7 @@ You should find the binaries and dlls in the `bin/` directory
 
 See the cross-compilation section in the [Nim compiler usage guide](https://nim-lang.github.io/Nim/nimc.html#crossminuscompilation), for a lot more details.
 
-Cross compiling to Windows from MacOs/Nix requires the `mingw` toolchain, usually a matter of just `brew install mingw` or `apt install mingw`.
+Cross compiling to Windows from MacOs/Nix requires the `mingw` toolchain, usually a matter of just `brew install mingw-w64` or `apt install mingw-w64`.
 
 You then just have to pass the  `-d=mingw` flag to the nim compiler.
 
