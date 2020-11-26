@@ -33,7 +33,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 - Python inspired syntax, allows rapid native payload creation & prototyping.
 - Has **extremely** mature [FFI](https://nim-lang.org/docs/manual.html#foreign-function-interface) (Foreign Function Interface) capabilities.
 - Avoids making you actually write in C/C++ and subsequently avoids introducing a lot of security issues into your software.
-- Super easy cross compilation to Windows from Nix/MacOS, only requires you to install the `mingw` toolchain and passing a single flag to the nim compiler.
+- Super easy cross compilation to Windows from *nix/MacOS, only requires you to install the `mingw` toolchain and passing a single flag to the nim compiler.
 - The Nim compiler and the generated executables support all major platforms like Windows, Linux, BSD and macOS. Can even compile to Nintendo switch , IOS & Android. See the cross-compilation section in the [Nim compiler usage guide](https://nim-lang.github.io/Nim/nimc.html#crossminuscompilation)
 - You could *technically* write your implant and c2 backend both in Nim as you can compile your code directly to Javascript. Even has some [initial support for WebAssembly's](https://forum.nim-lang.org/t/4779) 
 
@@ -62,7 +62,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 
 This repository does not provide binaries, you're gonna have to compile them yourself.
 
-This repo was setup to cross-compile the example Nim source files to Windows from Nix/MacOS, however they should work just fine directly compiling them on Windows (Don't think you'll be able to use the Makefile tho which compiles them all in one go).
+This repo was setup to cross-compile the example Nim source files to Windows from *nix/MacOS, however they should work just fine directly compiling them on Windows (Don't think you'll be able to use the Makefile tho which compiles them all in one go).
 
 [Install Nim](https://nim-lang.org/install_unix.html) using your systems package manager (for windows [use the installer on the official website](https://nim-lang.org/install_windows.html))
 
@@ -74,7 +74,7 @@ This repo was setup to cross-compile the example Nim source files to Windows fro
 You should now have the `nim` & `nimble` commands available, the former is the Nim compiler and the latter is Nim's package manager.
 
 Install the `Mingw` toolchain needed for cross-compilation to Windows (Not needed if you're compiling on Windows):
-- Nix: `apt-get install mingw-w64`
+- *nix: `apt-get install mingw-w64`
 - MacOS: `brew install mingw-w64`
 
 Finally, install the magnificent [Winim](https://github.com/khchen/winim) library:
@@ -89,7 +89,7 @@ You should find the binaries and dlls in the `bin/` directory
 
 See the cross-compilation section in the [Nim compiler usage guide](https://nim-lang.github.io/Nim/nimc.html#crossminuscompilation), for a lot more details.
 
-Cross compiling to Windows from MacOs/Nix requires the `mingw` toolchain, usually a matter of just `brew install mingw-w64` or `apt install mingw-w64`.
+Cross compiling to Windows from MacOs/*nix requires the `mingw` toolchain, usually a matter of just `brew install mingw-w64` or `apt install mingw-w64`.
 
 You then just have to pass the  `-d=mingw` flag to the nim compiler.
 
