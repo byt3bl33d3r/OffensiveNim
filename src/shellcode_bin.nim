@@ -11,6 +11,7 @@ proc injectCreateRemoteThread[I, T](shellcode: array[I, T]): void =
     # Under the hood, the startProcess function from Nim's osproc module is calling CreateProcess() :D
     let tProcess = startProcess("notepad.exe")
     tProcess.suspend() # That's handy!
+    defer: tProcess.close()
 
     echo "[*] Target Process: ", tProcess.processID
 
@@ -19,6 +20,7 @@ proc injectCreateRemoteThread[I, T](shellcode: array[I, T]): void =
         false, 
         cast[DWORD](tProcess.processID)
     )
+    defer: CloseHandle(pHandle)
 
     echo "[*] pHandle: ", pHandle
 
@@ -52,6 +54,7 @@ proc injectCreateRemoteThread[I, T](shellcode: array[I, T]): void =
         0, 
         NULL
     )
+    defer: CloseHandle(tHandle)
 
     echo "[*] tHandle: ", tHandle
     echo "[+] Injected"

