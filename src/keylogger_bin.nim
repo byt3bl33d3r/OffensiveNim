@@ -1,5 +1,4 @@
 #[
-
     Authors: Marcello Salvati (@byt3bl33d3r), Scottie Austin (@checkymander) & Kiran Patel
     License: BSD 3-Clause
 

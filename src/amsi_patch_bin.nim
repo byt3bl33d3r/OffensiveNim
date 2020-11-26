@@ -1,3 +1,9 @@
+#[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
+]#
+
 import winim/lean
 import strformat
 import dynlib
