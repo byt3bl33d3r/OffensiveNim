@@ -52,8 +52,10 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `execute_sct_bin.nim` | `.sct` file Execution via `GetObject()` |
 | `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object | 
 | `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
+| `keylogger_bin.nim` | Keylogger using `SetWindowsHookEx` |
+| `amsi_patch_bin.nim` | Patches AMSI out of the current process (**Bugged, but compiles. Help appreciated**) |
 | `clr_bin.nim` | Hosts the CLR and executes .NET assemblies (**WIP, help appreciated**) | 
-| `amsi_bypass_bin.nim` | Patches AMSI out of the current process (**WIP, help appreciated**) |
+| `amsi_patch_2_bin.nim` | Patches AMSI out of the current process using a different method (**WIP, help appreciated**) |
 | `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
 ## Compiling the examples in this repo
