@@ -24,8 +24,8 @@ clean:
 
 %.exe : %.nim
 	nim c $(NIMFLAGS) --app=console --cpu=amd64 --out=bin/$*_64.exe $<
-	nim c $(NIMFLAGS) --app=console --cpu=i386 --out=bin/$*_32.exe $<
+	#nim c $(NIMFLAGS) --app=console --cpu=i386 --out=bin/$*_32.exe $<
 
 %.dll: %.nim
 	nim c $(NIMFLAGS) --app=lib --nomain --cpu=amd64 --out=bin/$*_64.dll $<
-	nim c $(NIMFLAGS) --app=lib --nomain --cpu=i386 --out=bin/$*_32.dll $<
+	#nim c $(NIMFLAGS) --app=lib --nomain --cpu=i386 --out=bin/$*_32.dll $<

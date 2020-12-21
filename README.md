@@ -43,6 +43,10 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | ---  | --- |
 | `pop_bin.nim` | Call `MessageBox` WinApi *without* using the Winim library |
 | `pop_winim_bin.nim` | Call `MessageBox` *with* the Winim libary |
+| `execute_assembly_bin.nim` | Hosts the CLR, reflectively executes .NET assemblies from memory |
+| `clr_host_sloppy_bin.nim` | Hosts the CLR by directly embedding C++ code, executes a .NET assembly from disk |
+| `named_pipe_client_bin.nim` | Named Pipe Client |
+| `named_pipe_server_bin.nim` | Named Pipe Server
 | `pop_winim_lib.nim` | Example of creating a Windows DLL with an exported `DllMain` |  
 | `wmiquery_bin.nim` | Queries running processes and installed AVs using using WMI |
 | `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..| 
@@ -54,7 +58,6 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
 | `keylogger_bin.nim` | Keylogger using `SetWindowsHookEx` |
 | `amsi_patch_bin.nim` | Patches AMSI out of the current process (**Bugged, but compiles. Help appreciated**) |
-| `clr_bin.nim` | Hosts the CLR and executes .NET assemblies (**WIP, help appreciated**) | 
 | `amsi_patch_2_bin.nim` | Patches AMSI out of the current process using a different method (**WIP, help appreciated**) |
 | `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
