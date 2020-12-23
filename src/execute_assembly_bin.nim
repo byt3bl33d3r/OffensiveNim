@@ -1,18 +1,15 @@
 #[
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
     I still can't believe this was added directly in the Winim library. Huge props to the author of Winim for this (khchen), really great stuff.
 
     Make sure you have Winim >=3.6.0 installed. If in doubt do a `nimble install winim`
-
-    We can't directly call the Assembly.EntryPoint.Invoke() method cause the Nim array needs to be marshalled to a COM CCW type first and passed to a Winim function that can handle those (from my understanding).
-    The workaround that I came up with is to get the DeclaryingType and MethodName from the EntryPoint object, then do a GetType() and t.invoke() (notice invoke() is lower case, which handles marshalled types).
 
     Also see https://github.com/khchen/winim/issues/63 for an amazing pro-tip from the author of Winim in order to determine the marshalling type of .NET objects.
 
     References:
       - https://github.com/khchen/winim/blob/master/examples/clr/usage_demo2.nim
-
-    Author: Marcello Salvati, Twitter: @byt3bl33d3r
-    License: BSD 3-Clause
 ]#
 
 import winim/clr
@@ -32,6 +29,11 @@ echo ""
 var assembly = load(buf)
 dump assembly
 
+#[
+
+# I initially thought we couldn't use EntryPoint.Invoke() and the below code was my work around. Turns out I was wrong!
+# See https://github.com/byt3bl33d3r/OffensiveNim/issues/9
+
 var dt = fromCLRVariant[string](assembly.EntryPoint.DeclaringType.ToString())
 var mn = fromCLRVariant[string](assembly.EntryPoint.Name)
 echo fmt"[*] EntryPoint.DeclaringType: '{dt}'"
@@ -40,3 +42,11 @@ var t = assembly.GetType(dt)
 var flags = BindingFlags_Static or BindingFlags_Public or BindingFlags_InvokeMethod
 @t.invoke(mn, flags, toCLRVariant([""], VT_BSTR)) # Passing an empty array
 @t.invoke(mn, flags, toCLRVariant(["From Nim & .NET!"], VT_BSTR)) # Actually passing some args 
+
+]#
+
+var arr = toCLRVariant([""], VT_BSTR) # Passing no arguments
+assembly.EntryPoint.Invoke(nil, toCLRVariant([arr]))
+
+arr = toCLRVariant(["From Nim & .NET!"], VT_BSTR) # Actually passing some args
+assembly.EntryPoint.Invoke(nil, toCLRVariant([arr]))

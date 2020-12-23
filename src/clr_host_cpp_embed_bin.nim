@@ -1,5 +1,8 @@
 #[
 
+    Author: Marcello Salvati, Twitter: @byt3bl33d3r
+    License: BSD 3-Clause
+
     This was an initial attempt at trying to embed the CLR before Winim 3.6.0 was out (which now supports all of the necessary API calls to load .NET assemblies).
 
     If anything it was a pretty cool excercise and an example of how to embed C++ directly within Nim.
@@ -8,7 +11,7 @@
         - When using Nim's C++ backend and cross-compiling to Windows you need to statically link the binaries by passing the '-static' flag to the linker. 
           Otherwise the resulting binaries will **not** run (Seems like a bug?)
 
-        - This particular example will only work on x64 machines and requires the metahost.h and mscoree.lib files (in the res directory).
+        - This particular example will only work on x64 machines and requires the metahost.h and mscoree.lib files (in the rsrc directory).
           Both of those files we're stolen directly from my Windows VM. If you want to compile to x86 you need to grab the x86 version of mscoree.lib.
 
     Gr33tz & huge thanks to Pancho for helping me get this to work.
@@ -18,8 +21,8 @@
 
 ]#
 
-{.passL:"-L ./res -l mscoree -static".}
-{.passC:"-I ./res".}
+{.passL:"-L ./rsrc -l mscoree -static".}
+{.passC:"-I ./rsrc".}
 
 when not defined(cpp):
     {.error: "Must be compiled in cpp mode"}
