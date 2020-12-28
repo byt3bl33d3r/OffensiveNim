@@ -46,6 +46,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `execute_assembly_bin.nim` | Hosts the CLR, reflectively executes .NET assemblies from memory |
 | `clr_host_cpp_embed_bin.nim` | Hosts the CLR by directly embedding C++ code, executes a .NET assembly from disk |
 | `scshell_c_embed_bin.nim` | Shows how to quickly weaponize existing C code by embedding [SCShell](https://github.com/Mr-Un1k0d3r/SCShell) (C) directly within Nim |
+| `fltmc_bin.nim` | Enumerates all Minifilter drivers |
 | `named_pipe_client_bin.nim` | Named Pipe Client |
 | `named_pipe_server_bin.nim` | Named Pipe Server | 
 | `pop_winim_lib.nim` | Example of creating a Windows DLL with an exported `DllMain` |  
