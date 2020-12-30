@@ -37,30 +37,35 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 - The Nim compiler and the generated executables support all major platforms like Windows, Linux, BSD and macOS. Can even compile to Nintendo switch , IOS & Android. See the cross-compilation section in the [Nim compiler usage guide](https://nim-lang.github.io/Nim/nimc.html#crossminuscompilation)
 - You could *technically* write your implant and c2 backend both in Nim as you can compile your code directly to Javascript. Even has some [initial support for WebAssembly's](https://forum.nim-lang.org/t/4779) 
 
-## Examples in this Repo
+## Examples in this repo that work
 
 | File | Description |
 | ---  | --- |
 | `pop_bin.nim` | Call `MessageBox` WinApi *without* using the Winim library |
 | `pop_winim_bin.nim` | Call `MessageBox` *with* the Winim libary |
+| `pop_winim_lib.nim` | Example of creating a Windows DLL with an exported `DllMain` |
 | `execute_assembly_bin.nim` | Hosts the CLR, reflectively executes .NET assemblies from memory |
 | `clr_host_cpp_embed_bin.nim` | Hosts the CLR by directly embedding C++ code, executes a .NET assembly from disk |
 | `scshell_c_embed_bin.nim` | Shows how to quickly weaponize existing C code by embedding [SCShell](https://github.com/Mr-Un1k0d3r/SCShell) (C) directly within Nim |
 | `fltmc_bin.nim` | Enumerates all Minifilter drivers |
 | `blockdlls_acg_ppid_spoof_bin.nim` | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
 | `named_pipe_client_bin.nim` | Named Pipe Client |
-| `named_pipe_server_bin.nim` | Named Pipe Server | 
-| `pop_winim_lib.nim` | Example of creating a Windows DLL with an exported `DllMain` |  
+| `named_pipe_server_bin.nim` | Named Pipe Server |
+| `amsi_patch_bin.nim` | Patches AMSI out of the current process |
 | `wmiquery_bin.nim` | Queries running processes and installed AVs using using WMI |
-| `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..| 
+| `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
 | `passfilter_lib.nim` | Log password changes to a file by (ab)using a password complexity filter |
 | `minidump_bin.nim` | Creates a memory dump of lsass using `MiniDumpWriteDump` |
 | `http_request_bin.nim` | Demonstrates a couple of ways of making HTTP requests |
 | `execute_sct_bin.nim` | `.sct` file Execution via `GetObject()` |
-| `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object | 
+| `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object |
 | `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
 | `keylogger_bin.nim` | Keylogger using `SetWindowsHookEx` |
-| `amsi_patch_bin.nim` | Patches AMSI out of the current process (**Bugged, but compiles. Help appreciated**) |
+
+## Examples that are a WIP
+
+| File | Description |
+| ---  | --- |
 | `amsi_patch_2_bin.nim` | Patches AMSI out of the current process using a different method (**WIP, help appreciated**) |
 | `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
