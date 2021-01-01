@@ -15,7 +15,7 @@
   * [编译范例](#编译范例)
   * [跨平台编译](#跨平台编译)
   * [C/C++接口](#C/C++接口)
-  * [用DllMain入口点函数创建Windows DLLs](#用DllMain入口点函数创建Windows-DLLs)
+  * [用DllMain入口点函数创建Windows DLLs](#用-dllmain入口点函数创建windows-dlls)
   * [优化可执行程序大小](#优化可执行程序大小)
   * [是否使用Winim库，可执行程序大小是不同的](#是否使用Winim库，可执行程序大小是不同的)
   * [Opsec考虑](#Opsec考虑)
@@ -265,7 +265,7 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 - https://github.com/miere43/nim-registry
 - https://github.com/status-im/nim-daemon
 
-## Nim 植入体开发相关连接
+## Nim植入体开发相关连接
 
 - https://secbytes.net/Implant-Roulette-Part-1:-Nimplant
 - https://securelist.com/zebrocys-multilanguage-malware-salad/90680/
