@@ -15,17 +15,17 @@
   * [编译范例](#编译范例)
   * [跨平台编译](#跨平台编译)
   * [C/C++接口](#C/C++接口)
-  * [用 `DllMain`入口点函数创建Windows DLLs](#用 `DllMain`入口点函数创建Windows DLLs)
+  * [用DllMain入口点函数创建Windows DLLs](#用DllMain入口点函数创建Windows DLLs)
   * [优化可执行程序大小](#优化可执行程序大小)
   * [是否使用Winim库，可执行程序大小是不同的](#是否使用Winim库，可执行程序大小是不同的)
   * [Opsec考虑](#Opsec考虑)
-  * [转换 C 代码去 Nim](#转换 C 代码去 Nim)
+  * [转换C代码去Nim](#转换C代码去Nim)
   * [跨语言使用](#跨语言使用)
   * [调试](#调试)
   * [配置开发环境](#配置开发环境)
   * [我遇到过的陷阱](#我遇到过的陷阱)
   * [有趣的Nim库](#有趣的Nim库)
-  * [Nim implant(植入体)开发相关连接](#Nim implant(植入体)开发相关连接)
+  * [Nim植入体开发相关连接](#Nim植入体开发相关连接)
 
 ## 为什么用Nim
 
@@ -206,7 +206,7 @@ byt3bl33d3r@ecl1ps3 OffensiveNim % ls -lah bin
 
 ![](https://user-images.githubusercontent.com/5151193/99911079-4563cf00-2caf-11eb-960d-e500534b56dd.png)
 
-## 转换 C 代码去 Nim
+## 转换C代码去Nim
 
 https://github.com/nim-lang/c2nim
 
@@ -265,7 +265,7 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 - https://github.com/miere43/nim-registry
 - https://github.com/status-im/nim-daemon
 
-## Nim implant(植入体)开发相关连接
+## Nim 植入体开发相关连接
 
 - https://secbytes.net/Implant-Roulette-Part-1:-Nimplant
 - https://securelist.com/zebrocys-multilanguage-malware-salad/90680/
