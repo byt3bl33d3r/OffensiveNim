@@ -15,7 +15,7 @@
   * [编译范例](#编译范例)
   * [跨平台编译](#跨平台编译)
   * [C/C++接口](#C/C++接口)
-  * [用DllMain入口点函数创建Windows DLLs](#用DllMain入口点函数创建Windows DLLs)
+  * [用DllMain入口点函数创建Windows DLLs](#用DllMain入口点函数创建Windows-DLLs)
   * [优化可执行程序大小](#优化可执行程序大小)
   * [是否使用Winim库，可执行程序大小是不同的](#是否使用Winim库，可执行程序大小是不同的)
   * [Opsec考虑](#Opsec考虑)
