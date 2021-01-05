@@ -16,7 +16,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
   * [Interfacing with C/C++](#interfacing-with-cc)
   * [Creating Windows DLLs with an exported DllMain](#creating-windows-dlls-with-an-exported-dllmain)
   * [Optimizing executables for size](#optimizing-executables-for-size)
-  * [Reflectively Loading Nim Executables](#)
+  * [Reflectively Loading Nim Executables](#reflectively-loading-nim-executables)
   * [Executable size difference with the Winim Library](#executable-size-difference-when-using-the-winim-library-vs-without)
   * [Opsec Considirations](#opsec-considerations)
   * [Converting C Code to Nim](#converting-c-code-to-nim)

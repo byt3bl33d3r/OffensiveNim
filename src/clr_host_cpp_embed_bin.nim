@@ -12,7 +12,7 @@
           Otherwise the resulting binaries will **not** run (Seems like a bug?)
 
         - This particular example will only work on x64 machines and requires the metahost.h and mscoree.lib files (in the rsrc directory).
-          Both of those files we're stolen directly from my Windows VM. If you want to compile to x86 you need to grab the x86 version of mscoree.lib.
+          Both of those files were stolen directly from my Windows VM. If you want to compile to x86 you need to grab the x86 version of mscoree.lib.
 
     Gr33tz & huge thanks to Pancho for helping me get this to work.
 
