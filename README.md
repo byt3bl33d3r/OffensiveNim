@@ -16,6 +16,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
   * [Interfacing with C/C++](#interfacing-with-cc)
   * [Creating Windows DLLs with an exported DllMain](#creating-windows-dlls-with-an-exported-dllmain)
   * [Optimizing executables for size](#optimizing-executables-for-size)
+  * [Reflectively Loading Nim Executables](#)
   * [Executable size difference with the Winim Library](#executable-size-difference-when-using-the-winim-library-vs-without)
   * [Opsec Considirations](#opsec-considerations)
   * [Converting C Code to Nim](#converting-c-code-to-nim)
@@ -171,6 +172,21 @@ For the biggest size decrease use the following flags `-d:danger -d:strip --opt:
 Additionally, I've found you can squeeze a few more bytes out by passing `--passc=-flto --passl=-flto` to the compiler. Also take a look at the `Makefile` in this repo.
 
 These flags decrease sizes **dramatically**: the shellcode injection example goes from 484.3 KB to 46.5 KB when cross-compiled from MacOSX!
+
+## Reflectively Loading Nim Executables
+
+Huge thanks to [@Shitsecure](https://twitter.com/ShitSecure) for figuring this out!
+
+By default, Nim doesn't generate PE's with a relocation table which is needed by most tools that reflectively load EXE's.
+
+To generate a Nim executable *with* a relocation section you need to pass a few additional flags to the linker. 
+
+Specifically: ```--passL:-Wl,--dynamicbase```
+
+Full example command:
+```
+nim c --passL:-Wl,--dynamicbase my_awesome_malwarez.nim
+```
 
 ## Executable size difference when using the Winim library vs without
 
