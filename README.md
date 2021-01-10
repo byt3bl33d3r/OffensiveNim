@@ -244,6 +244,11 @@ See [this blog post for more](https://nim-lang.org/blog/2017/10/02/documenting-p
 
 VSCode has a Nim extension which works pretty well. This also seems to be the only option at this point.
 
+You can compile NIM from within visual studio by following these simple 2 steps:
+- Add `Code Runner` as an Extension to your Visual Studio Code  you can do this by browsing to the extensions tab and searching for code runner: 
+
+
+
 ## Pitfalls I found myself falling into
 
 - When calling winapi's with Winim and trying to pass a null value, make sure you pass the `NULL` value (defined within the Winim library) as supposed Nim's builtin `nil` value. (Ugh)
