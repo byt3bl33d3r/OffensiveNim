@@ -247,26 +247,28 @@ See [this blog post for more](https://nim-lang.org/blog/2017/10/02/documenting-p
 
 VSCode has a Nim extension which works pretty well. This also seems to be the only option at this point.
 
-You can compile NIM from within visual studio by following these simple 2 steps:
+You can automatically compile Nim code from within visual studio by following steps:
+
 1. Add `Code Runner` as an Extension to your Visual Studio Code  you can do this by browsing to the extensions tab and searching for code runner: 
-![https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/code-runner.JPG](https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/code-runner.JPG)
+![code-runner](https://user-images.githubusercontent.com/5151193/104265646-4ad9cc00-544b-11eb-9444-2b74c8da1051.png)
 
 2. After installing Code Runner you can configure it in Visual Studio code by pressing (`Ctrl+,` on Windows or `Ctrl+Shift+p` on Mac). You could also browse to the settings menu as follows: <br>
     - On Windows/Linux File > Preferences > Settings
     - On MacOS Code > Preferences > Settings
 
 Once you are in the settings window type `code-runner.executor`
-![https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/executor.JPG](https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/executor.JPG)
+![executor](https://user-images.githubusercontent.com/5151193/104265662-5200da00-544b-11eb-910f-e9065b6dbbb9.JPG)
 
 From here on out you could choose to change the nim execution by modifying the `executorMap` or you could change the `execution by Glob`. 
 Personally I'd recommend modifying the glob, an example would be as follows: 
-![https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/globExamples.JPG](https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/globExamples.JPG)
+![globExamples](https://user-images.githubusercontent.com/5151193/104265666-53ca9d80-544b-11eb-8016-9b62d1c17919.JPG)
 
 This configuration will compile any nim file that has gui in it's name to a gui application, and will drop them in the compiled-gui folder of the directory your nim file is in.
 Once you save the configuration, you can now press the play button in VSC and your code will compile itself:
-![https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/playbutton-pressed.JPG](https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/playbutton-pressed.JPG)
+![playbutton-pressed](https://user-images.githubusercontent.com/5151193/104265669-54fbca80-544b-11eb-92a4-171f16f01637.JPG)
+
 And it will indeed be in the correct folder as well.
-![https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/compiled-in-guidir.JPG](https://github.com/jfmaes/OffensiveNim/blob/master/Image-Assets/compiled-in-guidir.JPG)
+![compiled-in-guidir](https://user-images.githubusercontent.com/5151193/104265660-50cfad00-544b-11eb-931b-17af0166d317.JPG)
 
 
 ## Pitfalls I found myself falling into
