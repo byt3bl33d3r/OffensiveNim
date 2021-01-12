@@ -42,36 +42,36 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 
 | File | Description |
 | ---  | --- |
-| `pop_bin.nim` | Call `MessageBox` WinApi *without* using the Winim library |
-| `pop_winim_bin.nim` | Call `MessageBox` *with* the Winim libary |
-| `pop_winim_lib.nim` | Example of creating a Windows DLL with an exported `DllMain` |
-| `execute_assembly_bin.nim` | Hosts the CLR, reflectively executes .NET assemblies from memory |
-| `clr_host_cpp_embed_bin.nim` | Hosts the CLR by directly embedding C++ code, executes a .NET assembly from disk |
-| `scshell_c_embed_bin.nim` | Shows how to quickly weaponize existing C code by embedding [SCShell](https://github.com/Mr-Un1k0d3r/SCShell) (C) directly within Nim |
-| `fltmc_bin.nim` | Enumerates all Minifilter drivers |
-| `blockdlls_acg_ppid_spoof_bin.nim` | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
-| `named_pipe_client_bin.nim` | Named Pipe Client |
-| `named_pipe_server_bin.nim` | Named Pipe Server |
-| `encrypt_decrypt_bin.nim` | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
-| `amsi_patch_bin.nim` | Patches AMSI out of the current process |
-| `wmiquery_bin.nim` | Queries running processes and installed AVs using using WMI |
-| `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
-| `shellcode_inline_asm_bin.nim` | Executes shellcode using inline assembly |
-| `syscalls_bin.nim` | Shows how to make direct system calls |
-| `passfilter_lib.nim` | Log password changes to a file by (ab)using a password complexity filter |
-| `minidump_bin.nim` | Creates a memory dump of lsass using `MiniDumpWriteDump` |
-| `http_request_bin.nim` | Demonstrates a couple of ways of making HTTP requests |
-| `execute_sct_bin.nim` | `.sct` file Execution via `GetObject()` |
-| `scriptcontrol_bin.nim` | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object |
-| `excel_com_bin.nim` | Injects shellcode using the Excel COM object and Macros |
-| `keylogger_bin.nim` | Keylogger using `SetWindowsHookEx` |
+| [pop_bin.nim](../master/src/pop_bin.nim) | Call `MessageBox` WinApi *without* using the Winim library |
+| [pop_winim_bin.nim](../master/src/pop_winim_bin.nim) | Call `MessageBox` *with* the Winim libary |
+| [pop_winim_lib.nim](../master/src/pop_winim_lib.nim) | Example of creating a Windows DLL with an exported `DllMain` |
+| [execute_assembly_bin.nim](../master/src/execute_assembly_bin.nim) | Hosts the CLR, reflectively executes .NET assemblies from memory |
+| [clr_host_cpp_embed_bin.nim](../master/src/clr_host_cpp_embed_bin.nim) | Hosts the CLR by directly embedding C++ code, executes a .NET assembly from disk |
+| [scshell_c_embed_bin.nim](../master/src/scshell_c_embed_bin.nim) | Shows how to quickly weaponize existing C code by embedding [SCShell](https://github.com/Mr-Un1k0d3r/SCShell) (C) directly within Nim |
+| [fltmc_bin.nim](../master/src/fltmc_bin.nim) | Enumerates all Minifilter drivers |
+| [blockdlls_acg_ppid_spoof_bin.nim](../master/src/blockdlls_acg_ppid_spoof_bin.nim) | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
+| [named_pipe_client_bin.nim](../master/src/named_pipe_client_bin.nim) | Named Pipe Client |
+| [named_pipe_server_bin.nim](../master/src/named_pipe_server_bin.nim) | Named Pipe Server |
+| [encrypt_decrypt_bin.nim](../master/src/encrypt_decrypt_bin.nim) | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
+| [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
+| [wmiquery_bin.nim](../master/src/wmiquery_bin.nim) | Queries running processes and installed AVs using using WMI |
+| [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
+| [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
+| [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
+| [passfilter_lib.nim](../master/src/passfilter_lib.nim) | Log password changes to a file by (ab)using a password complexity filter |
+| [minidump_bin.nim](../master/src/minidump_bin.nim) | Creates a memory dump of lsass using `MiniDumpWriteDump` |
+| [http_request_bin.nim](../master/src/http_request_bin.nim) | Demonstrates a couple of ways of making HTTP requests |
+| [execute_sct_bin.nim](../master/src/execute_sct_bin.nim) | `.sct` file Execution via `GetObject()` |
+| [scriptcontrol_bin.nim](../master/src/scriptcontrol_bin.nim) | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object |
+| [excel_com_bin.nim](../master/src/excel_com_bin.nim) | Injects shellcode using the Excel COM object and Macros |
+| [keylogger_bin.nim](../master/src/keylogger_bin.nim) | Keylogger using `SetWindowsHookEx` |
 
 ## Examples that are a WIP
 
 | File | Description |
 | ---  | --- |
-| `amsi_patch_2_bin.nim` | Patches AMSI out of the current process using a different method (**WIP, help appreciated**) |
-| `excel_4_com_bin.nim` | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
+| [amsi_patch_2_bin.nim](../master/wip/amsi_patch_2_bin.nim) | Patches AMSI out of the current process using a different method (**WIP, help appreciated**) |
+| [excel_4_com_bin.nim](../master/wip/excel_4_com_bin.nim) | Injects shellcode using the Excel COM object and Excel 4 Macros (**WIP**) |
 
 ## Compiling the examples in this repo
 
@@ -247,7 +247,7 @@ See [this blog post for more](https://nim-lang.org/blog/2017/10/02/documenting-p
 
 VSCode has a Nim extension which works pretty well. This also seems to be the only option at this point.
 
-You can automatically compile Nim code from within visual studio by following steps:
+You can automatically compile Nim code from within visual studio by following these steps:
 
 1. Add `Code Runner` as an Extension to your Visual Studio Code  you can do this by browsing to the extensions tab and searching for code runner: 
 ![code-runner](https://user-images.githubusercontent.com/5151193/104265646-4ad9cc00-544b-11eb-9444-2b74c8da1051.png)
