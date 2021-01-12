@@ -52,9 +52,12 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | `blockdlls_acg_ppid_spoof_bin.nim` | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
 | `named_pipe_client_bin.nim` | Named Pipe Client |
 | `named_pipe_server_bin.nim` | Named Pipe Server |
+| `encrypt_decrypt_bin.nim` | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
 | `amsi_patch_bin.nim` | Patches AMSI out of the current process |
 | `wmiquery_bin.nim` | Queries running processes and installed AVs using using WMI |
 | `shellcode_bin.nim` | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
+| `shellcode_inline_asm_bin.nim` | Executes shellcode using inline assembly |
+| `syscalls_bin.nim` | Shows how to make direct system calls |
 | `passfilter_lib.nim` | Log password changes to a file by (ab)using a password complexity filter |
 | `minidump_bin.nim` | Creates a memory dump of lsass using `MiniDumpWriteDump` |
 | `http_request_bin.nim` | Demonstrates a couple of ways of making HTTP requests |
