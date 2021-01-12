@@ -11,7 +11,6 @@
 ]#
 
 import winim
-import strutils
 
 type
     MINIDUMP_TYPE = enum
@@ -27,6 +26,13 @@ proc MiniDumpWriteDump(
     CallbackParam: INT
 ): BOOL {.importc: "MiniDumpWriteDump", dynlib: "dbghelp", stdcall.}
 
+proc toString(chars: openArray[WCHAR]): string =
+    result = ""
+    for c in chars:
+        if cast[char](c) == '\0':
+            break
+        result.add(cast[char](c))
+
 proc GetLsassPid(): int =
     var 
         entry: PROCESSENTRY32
@@ -38,11 +44,7 @@ proc GetLsassPid(): int =
 
     if Process32First(hSnapshot, addr entry):
         while Process32Next(hSnapshot, addr entry):
-            # At the time of writing, Nim doesn't have a built in way of converting a char array to a string
-            var exeName: string = newString(entry.szExeFile.len)
-            for ch in entry.szExeFile:
-                add(exeName, cast[char](ch))
-            if exeName.strip(chars={'\0'}) == "lsass.exe":
+            if entry.szExeFile.toString == "lsass.exe":
                 return int(entry.th32ProcessID)
 
     return 0
