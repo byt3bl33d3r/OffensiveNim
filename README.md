@@ -66,6 +66,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [scriptcontrol_bin.nim](../master/src/scriptcontrol_bin.nim) | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object |
 | [excel_com_bin.nim](../master/src/excel_com_bin.nim) | Injects shellcode using the Excel COM object and Macros |
 | [keylogger_bin.nim](../master/src/keylogger_bin.nim) | Keylogger using `SetWindowsHookEx` |
+| [memfd_python_interpreter_bin.nim](../master/src/memfd_python_interpreter_bin.nim) | Use `memfd_create` syscall to load a binary into an anonymous file and execute it with `execve` syscall. (Contributed by [@VVX7](https://twitter.com/VV_X_7))|
 
 ## Examples that are a WIP
 
