@@ -52,6 +52,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [blockdlls_acg_ppid_spoof_bin.nim](../master/src/blockdlls_acg_ppid_spoof_bin.nim) | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
 | [named_pipe_client_bin.nim](../master/src/named_pipe_client_bin.nim) | Named Pipe Client |
 | [named_pipe_server_bin.nim](../master/src/named_pipe_server_bin.nim) | Named Pipe Server |
+| [self_delete_bin.nim](../master/src/self_delete_bin.nim) | A way to delete a locked or current running executable on disk. Method discovered by [@jonasLyk](https://twitter.com/jonasLyk/status/1350401461985955840) |
 | [encrypt_decrypt_bin.nim](../master/src/encrypt_decrypt_bin.nim) | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
 | [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
 | [etw_patch_bin.nim](../master/src/etw_patch_bin.nim) | Patches ETW out of the current process (Contributed by [@ShitSecure](https://twitter.com/ShitSecure)) |
