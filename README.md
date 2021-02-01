@@ -86,6 +86,7 @@ This repo was setup to cross-compile the example Nim source files to Windows fro
 
 - `brew install nim`
 - `apt install nim`
+- `choco install nim`
 
 (Nim also provides a docker image but don't know how it works when it comes to cross-compiling, need to look into this)
 
