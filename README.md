@@ -60,6 +60,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
 | [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
 | [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
+| [execute_powershell_bin.nim](../master/src/execute_powershell_bin.nim) | Hosts the CLR & executes PowerShell through an un-managed runspace |
 | [passfilter_lib.nim](../master/src/passfilter_lib.nim) | Log password changes to a file by (ab)using a password complexity filter |
 | [minidump_bin.nim](../master/src/minidump_bin.nim) | Creates a memory dump of lsass using `MiniDumpWriteDump` |
 | [http_request_bin.nim](../master/src/http_request_bin.nim) | Demonstrates a couple of ways of making HTTP requests |
