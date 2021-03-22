@@ -1,8 +1,11 @@
 #[
     Author: Fabian Mosch, Twitter: @ShitSecure
     License: BSD 3-Clause
+
+    References:
+        - https://github.com/ChaitanyaHaritash/Callback_Shellcode_Injection/blob/main/EnumSystemGeoID.cpp
 ]#
-# The template is stolen from here: https://github.com/ChaitanyaHaritash/Callback_Shellcode_Injection/blob/main/EnumSystemGeoID.cpp
+
 import winim/lean
 
 when defined(windows):

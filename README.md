@@ -57,6 +57,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
 | [etw_patch_bin.nim](../master/src/etw_patch_bin.nim) | Patches ETW out of the current process (Contributed by [@ShitSecure](https://twitter.com/ShitSecure)) |
 | [wmiquery_bin.nim](../master/src/wmiquery_bin.nim) | Queries running processes and installed AVs using using WMI |
+| [shellcode__callback_bin.nim](../master/src/shellcode_callback_bin.nim) | Executes shellcode using Callback functions |
 | [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
 | [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
 | [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
