@@ -1,3 +1,8 @@
+#[
+    Author: Guillaume Caillé, Twitter: @OffenseTeacher
+    License: BSD 3-Clause
+]#
+
 import winim
 import winim/lean
 
