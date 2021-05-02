@@ -74,7 +74,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [excel_com_bin.nim](../master/src/excel_com_bin.nim) | Injects shellcode using the Excel COM object and Macros |
 | [keylogger_bin.nim](../master/src/keylogger_bin.nim) | Keylogger using `SetWindowsHookEx` |
 | [memfd_python_interpreter_bin.nim](../master/src/memfd_python_interpreter_bin.nim) | Use `memfd_create` syscall to load a binary into an anonymous file and execute it with `execve` syscall. |
-| [uuid_exec_bin.nim](../master/src/uuid_exec_bin.nim) | Plants shellcode from UUID array into heap space and uses EnumSystemLocalesA callback in order to execute the shellcode. |
+| [uuid_exec_bin.nim](../master/src/uuid_exec_bin.nim) | Plants shellcode from UUID array into heap space and uses `EnumSystemLocalesA` Callback in order to execute the shellcode. |
 
 ## Examples that are a WIP
 
