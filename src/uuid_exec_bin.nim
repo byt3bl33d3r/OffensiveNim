@@ -65,6 +65,6 @@ when defined(windows):
 
         # Calling the Callback Function
         echo fmt"[*] Calling the Callback Function ..." 
-        EnumSystemLocalesA(cast[LOCALE_ENUMPROCA](ha), 0);
+        EnumSystemLocalesA(cast[LOCALE_ENUMPROCA](ha), 0)
         CloseHandle(hHeap)
         quit(QuitSuccess)
