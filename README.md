@@ -227,7 +227,7 @@ byt3bl33d3r@ecl1ps3 OffensiveNim % ls -lah bin
 
 ## Opsec Considerations
 
-Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show up in the executables static imports (see [this blog post](https://secbytes.net/Implant-Roulette-Part-1:-Nimplant) for more on this):
+Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show up in the executables static imports (see [this blog post](https://web.archive.org/web/20210117002945/https://secbytes.net/implant-roulette-part-1:-nimplant/) for more on this):
 
 ![](https://user-images.githubusercontent.com/5151193/99911179-d0dd6000-2caf-11eb-933a-6a7ada510747.png)
 
@@ -322,7 +322,7 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 
 ## Nim for implant dev links
 
-- https://secbytes.net/Implant-Roulette-Part-1:-Nimplant
+- https://web.archive.org/web/20210117002945/https://secbytes.net/implant-roulette-part-1:-nimplant/
 - https://securelist.com/zebrocys-multilanguage-malware-salad/90680/
 - https://github.com/MythicAgents/Nimplant
 - https://github.com/elddy/Nim-SMBExec
