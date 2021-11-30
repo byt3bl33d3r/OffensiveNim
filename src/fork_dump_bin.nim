@@ -14,7 +14,7 @@
 ]#
 
 from os import paramStr, commandLineParams
-from system import quit
+from system import quit, newException
 from strutils import parseInt
 import strformat
 import winim/lean
@@ -22,6 +22,7 @@ import winim/lean
 {.passC:"-masm=intel".}
 
 type
+    FunctionCallException = object of CatchableError
     MINIDUMP_TYPE = enum
         MiniDumpWithFullMemory = 0x00000002
 
@@ -164,6 +165,7 @@ proc forkSnapshot(targetProcessId: DWORD): HANDLE =
     result = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, targetProcessId)
     if result == FALSE:
         echo fmt"Failed to open a PROCESS_CREATE_PROCESS handle to target process {targetProcessId} [Error: {GetLastError()}]"
+        raise newException(FunctionCallException, "OpenProcess() failed")
 
 proc takeSnapshot(targetProcessId: DWORD): HANDLE =
     var 
@@ -185,6 +187,7 @@ proc takeSnapshot(targetProcessId: DWORD): HANDLE =
 
     if NT_SUCCESS(status) == FALSE:
         echo fmt"Failed to create fork process for target {targetProcessId} [Error: {GetLastError()}]"
+        raise newException(FunctionCallException, "NtCreateProcessEx() failed")
 
     return currentSnapshotProcess
 
@@ -222,6 +225,7 @@ proc setDebugPrivs(): bool =
         CloseHandle(currentToken)
         return false
 
+    echo "Successfully set debug privs on current process"
     return true
 
 when isMainModule:
@@ -239,11 +243,13 @@ when isMainModule:
 
     echo "targetProcessId: ", targetProcessId
     dumpfile = open(dumpFileName, fmWrite)
-    snapshotProcess = takeSnapshot(targetProcessId)
 
-    adjustedPrivSuccess = setDebugPrivs()
-    if adjustedPrivSuccess:
-        echo "Successfully set debug privs on current process"
+    try:
+        snapshotProcess = takeSnapshot(targetProcessId)
+    except FunctionCallException:
+        echo "Forking process failed, setting debug privileges and re-trying"
+        adjustedPrivSuccess = setDebugPrivs()
+        snapshotProcess = takeSnapshot(targetProcessId)
 
     dumpSuccess = MiniDumpWriteDump(
         snapshotProcess, 
