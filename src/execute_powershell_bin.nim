@@ -26,6 +26,10 @@ pipeline.Commands.AddScript("Get-Process")
 pipeline.Commands.Add("Out-String")
 
 var results = pipeline.Invoke()
+
+for i in countUp(0,results.Count()-1):
+    echo results.Item(i)
+
 dump results
 echo results.isType()
 var t = results.GetType()
