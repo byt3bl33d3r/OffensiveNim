@@ -26,6 +26,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
   * [Pitfalls I found myself falling into](#pitfalls-i-found-myself-falling-into)
   * [Interesting Nim Libraries](#interesting-nim-libraries)
   * [Nim for Implant Dev Links](#nim-for-implant-dev-links)
+  * [Contributors](#contributors)
 
 ## Why Nim?
 
@@ -52,12 +53,19 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [blockdlls_acg_ppid_spoof_bin.nim](../master/src/blockdlls_acg_ppid_spoof_bin.nim) | Creates a suspended process that spoofs its PPID to explorer.exe, also enables BlockDLLs and ACG |
 | [named_pipe_client_bin.nim](../master/src/named_pipe_client_bin.nim) | Named Pipe Client |
 | [named_pipe_server_bin.nim](../master/src/named_pipe_server_bin.nim) | Named Pipe Server |
+| [embed_rsrc_bin.nim](../master/src/embed_rsrc_bin.nim) | Embeds a resource (zip file) at compile time and extracts contents at runtime |
+| [self_delete_bin.nim](../master/src/self_delete_bin.nim) | A way to delete a locked or current running executable on disk. Method discovered by [@jonasLyk](https://twitter.com/jonasLyk/status/1350401461985955840) |
 | [encrypt_decrypt_bin.nim](../master/src/encrypt_decrypt_bin.nim) | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
 | [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
+| [etw_patch_bin.nim](../master/src/etw_patch_bin.nim) | Patches ETW out of the current process (Contributed by ) |
 | [wmiquery_bin.nim](../master/src/wmiquery_bin.nim) | Queries running processes and installed AVs using using WMI |
+| [out_compressed_dll_bin.nim](../master/src/out_compressed_dll_bin.nim) | Compresses, Base-64 encodes and outputs PowerShell code to load a managed dll in memory. Port of the orignal PowerSploit script to Nim. |
+| [dynamic_shellcode_local_inject_bin.nim](../master/src/dynamic_shellcode_local_inject_bin.nim) | POC to locally inject shellcode recovered dynamically instead of hardcoding it in an array. | 
+| [shellcode_callback_bin.nim](../master/src/shellcode_callback_bin.nim) | Executes shellcode using Callback functions |
 | [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
 | [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
 | [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
+| [execute_powershell_bin.nim](../master/src/execute_powershell_bin.nim) | Hosts the CLR & executes PowerShell through an un-managed runspace |
 | [passfilter_lib.nim](../master/src/passfilter_lib.nim) | Log password changes to a file by (ab)using a password complexity filter |
 | [minidump_bin.nim](../master/src/minidump_bin.nim) | Creates a memory dump of lsass using `MiniDumpWriteDump` |
 | [http_request_bin.nim](../master/src/http_request_bin.nim) | Demonstrates a couple of ways of making HTTP requests |
@@ -65,6 +73,10 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [scriptcontrol_bin.nim](../master/src/scriptcontrol_bin.nim) | Dynamically execute VBScript and JScript using the `MSScriptControl` COM object |
 | [excel_com_bin.nim](../master/src/excel_com_bin.nim) | Injects shellcode using the Excel COM object and Macros |
 | [keylogger_bin.nim](../master/src/keylogger_bin.nim) | Keylogger using `SetWindowsHookEx` |
+| [memfd_python_interpreter_bin.nim](../master/src/memfd_python_interpreter_bin.nim) | Use `memfd_create` syscall to load a binary into an anonymous file and execute it with `execve` syscall. |
+| [uuid_exec_bin.nim](../master/src/uuid_exec_bin.nim) | Plants shellcode from UUID array into heap space and uses `EnumSystemLocalesA` Callback in order to execute the shellcode. |
+| [taskbar_ewmi_bin.nim](../master/src/taskbar_ewmi_bin.nim) | Uses Extra Window Memory Injection via Running Application property of TaskBar in order to execute the shellcode. |
+| [fork_dump_bin.nim](../master/src/fork_dump_bin.nim) | (ab)uses Window's implementation of `fork()` and acquires a handle to a remote process using the PROCESS_CREATE_PROCESS access right. It then attempts to dump the forked processes memory using `MiniDumpWriteDump()` |
 
 ## Examples that are a WIP
 
@@ -83,6 +95,7 @@ This repo was setup to cross-compile the example Nim source files to Windows fro
 
 - `brew install nim`
 - `apt install nim`
+- `choco install nim`
 
 (Nim also provides a docker image but don't know how it works when it comes to cross-compiling, need to look into this)
 
@@ -92,9 +105,9 @@ Install the `Mingw` toolchain needed for cross-compilation to Windows (Not neede
 - *nix: `apt-get install mingw-w64`
 - MacOS: `brew install mingw-w64`
 
-Finally, install the magnificent [Winim](https://github.com/khchen/winim) library:
+Finally, install the magnificent [Winim](https://github.com/khchen/winim) library, along with [zippy](https://github.com/guzba/zippy/) and [nimcrypto](https://github.com/cheatfate/nimcrypto)
 
-- `nimble install winim`
+- `nimble install winim zippy nimcrypto`
 
 Then cd into the root of this repository and run `make`.
 
@@ -216,7 +229,7 @@ byt3bl33d3r@ecl1ps3 OffensiveNim % ls -lah bin
 
 ## Opsec Considerations
 
-Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show up in the executables static imports (see [this blog post](https://secbytes.net/Implant-Roulette-Part-1:-Nimplant) for more on this):
+Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI none of your external imported functions will actually show up in the executables static imports (see [this blog post](https://web.archive.org/web/20210117002945/https://secbytes.net/implant-roulette-part-1:-nimplant/) for more on this):
 
 ![](https://user-images.githubusercontent.com/5151193/99911179-d0dd6000-2caf-11eb-933a-6a7ada510747.png)
 
@@ -311,8 +324,17 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 
 ## Nim for implant dev links
 
-- https://secbytes.net/Implant-Roulette-Part-1:-Nimplant
+- https://web.archive.org/web/20210117002945/https://secbytes.net/implant-roulette-part-1:-nimplant/
 - https://securelist.com/zebrocys-multilanguage-malware-salad/90680/
 - https://github.com/MythicAgents/Nimplant
 - https://github.com/elddy/Nim-SMBExec
 - https://github.com/elddy/NimScan
+
+## Contributors 
+
+- [@ShitSecure](https://twitter.com/ShitSecure)
+- [@VVX7](https://twitter.com/VV_X_7)
+- [@checkymander](https://twitter.com/checkymander)
+- Kiran Patel
+- [@frknayar](https://twitter.com/frknayar)
+- [@OffenseTeacher](https://twitter.com/OffenseTeacher)

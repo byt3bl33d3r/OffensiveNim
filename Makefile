@@ -19,8 +19,7 @@ build: $(BINS) $(DLLS)
 rebuild: clean build
 
 clean:
-	rm -rf bin/*.exe
-	rm -rf bin/*.dll
+	rm -rf bin/*.exe bin/*.dll
 
 %.exe : %.nim
 	nim c $(NIMFLAGS) --app=console --cpu=amd64 --out=bin/$*_64.exe $<
