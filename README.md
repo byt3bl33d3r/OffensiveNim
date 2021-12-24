@@ -75,6 +75,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [keylogger_bin.nim](../master/src/keylogger_bin.nim) | Keylogger using `SetWindowsHookEx` |
 | [memfd_python_interpreter_bin.nim](../master/src/memfd_python_interpreter_bin.nim) | Use `memfd_create` syscall to load a binary into an anonymous file and execute it with `execve` syscall. |
 | [uuid_exec_bin.nim](../master/src/uuid_exec_bin.nim) | Plants shellcode from UUID array into heap space and uses `EnumSystemLocalesA` Callback in order to execute the shellcode. |
+| [unhookc.nim](../master/src/unhookc.nim) | Unhooks ntdll.dll to evade EDR/AV hooks, code template from [ired.team](https://www.ired.team/offensive-security/defense-evasion/how-to-unhook-a-dll-using-c++). |
 | [taskbar_ewmi_bin.nim](../master/src/taskbar_ewmi_bin.nim) | Uses Extra Window Memory Injection via Running Application property of TaskBar in order to execute the shellcode. |
 | [fork_dump_bin.nim](../master/src/fork_dump_bin.nim) | (ab)uses Window's implementation of `fork()` and acquires a handle to a remote process using the PROCESS_CREATE_PROCESS access right. It then attempts to dump the forked processes memory using `MiniDumpWriteDump()` |
 
