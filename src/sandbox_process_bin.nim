@@ -4,7 +4,7 @@
     License: BSD 3-Clause
 
     This effectively sandboxes a process by removing it's token privileges and setting it's integrity level to "Untrusted".
-    The primary use case of this would be to run it against an AV/EDR process to nuetor it
+    The primary use case of this would be to run it against an AV/EDR process to neuter it even if it's a PPL process.
 
     References:
         - https://elastic.github.io/security-research/whitepapers/2022/02/02.sandboxing-antimalware-products-for-fun-and-profit/article/
