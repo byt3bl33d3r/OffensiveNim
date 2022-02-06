@@ -12,6 +12,8 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
   * [Why Nim?](#why-nim)
   * [Examples in this repo](#examples-in-this-repo)
   * [Compiling the examples](#compiling-the-examples-in-this-repo)
+    + [Easy Way (Recommended)](#easy-way-recommended)
+    + [Hard Way (For the Bold)](#hard-way-for-the-bold)
   * [Cross Compiling](#cross-compiling)
   * [Interfacing with C/C++](#interfacing-with-cc)
   * [Creating Windows DLLs with an exported DllMain](#creating-windows-dlls-with-an-exported-dllmain)
@@ -91,17 +93,21 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 
 ## Compiling the examples in this repo
 
-This repository does not provide binaries, you're gonna have to compile them yourself.
+This repository does not provide binaries, you're gonna have to compile them yourself. This repo was setup to cross-compile the example Nim source files to Windows from Linux or MacOS.
 
-This repo was setup to cross-compile the example Nim source files to Windows from *nix/MacOS, however they should work just fine directly compiling them on Windows (Don't think you'll be able to use the Makefile tho which compiles them all in one go).
+### Easy Way (Recommended)
 
-[Install Nim](https://nim-lang.org/install_unix.html) using your systems package manager (for windows [use the installer on the official website](https://nim-lang.org/install_windows.html))
+Use [VSCode Devcontainers](https://code.visualstudio.com/docs/remote/create-dev-container) to automatically setup a development environment for you (See the [Setting Up a Dev Environment](#setting-up-a-dev-environment) section). Once that's done simply run `make`.
+
+### Hard way (For the bold)
+
+[Install Nim](https://nim-lang.org/install_unix.html) using your systems package manager (for Windows [use the installer on the official website](https://nim-lang.org/install_windows.html))
 
 - `brew install nim`
 - `apt install nim`
 - `choco install nim`
 
-(Nim also provides a docker image but don't know how it works when it comes to cross-compiling, need to look into this)
+(Nim also provides a [docker image on Dockerhub](https://hub.docker.com/r/nimlang/nim/))
 
 You should now have the `nim` & `nimble` commands available, the former is the Nim compiler and the latter is Nim's package manager.
 
