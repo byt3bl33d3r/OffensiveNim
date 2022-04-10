@@ -65,6 +65,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [dynamic_shellcode_local_inject_bin.nim](../master/src/dynamic_shellcode_local_inject_bin.nim) | POC to locally inject shellcode recovered dynamically instead of hardcoding it in an array. | 
 | [shellcode_callback_bin.nim](../master/src/shellcode_callback_bin.nim) | Executes shellcode using Callback functions |
 | [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
+| [shellcode_fiber.nim](../master/src/shellcode_fiber.nim) | Shellcode execution via fibers |
 | [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
 | [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
 | [execute_powershell_bin.nim](../master/src/execute_powershell_bin.nim) | Hosts the CLR & executes PowerShell through an un-managed runspace |
