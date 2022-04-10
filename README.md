@@ -84,6 +84,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [fork_dump_bin.nim](../master/src/fork_dump_bin.nim) | (ab)uses Window's implementation of `fork()` and acquires a handle to a remote process using the PROCESS_CREATE_PROCESS access right. It then attempts to dump the forked processes memory using `MiniDumpWriteDump()` |
 | [ldap_query_bin.nim](../master/src/ldap_query_bin.nim) | Perform LDAP queries via COM by using ADO's ADSI provider |
 | [sandbox_process_bin.nim](../master/src/sandbox_process_bin.nim) | This sandboxes a process by setting it's integrity level to Untrusted and strips important tokens. This can be used to "silently disable" a PPL process (e.g. AV/EDR) |
+| [list_remote_shares.nim](../master/src/list_remote_shares.nim) | Use NetShareEnum to list the share accessible by the current user |
 
 ## Examples that are a WIP
 
