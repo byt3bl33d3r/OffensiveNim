@@ -86,7 +86,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [sandbox_process_bin.nim](../master/src/sandbox_process_bin.nim) | This sandboxes a process by setting it's integrity level to Untrusted and strips important tokens. This can be used to "silently disable" a PPL process (e.g. AV/EDR) |
 | [list_remote_shares.nim](../master/src/list_remote_shares.nim) | Use NetShareEnum to list the share accessible by the current user |
 | [chrome_dump_bin.nim](../master/src/chrome_dump_bin.nim) | Read and decrypt cookies from Chrome's sqlite database|
-
+| [suspended_thread_injection.nim](../master/src/suspended_thread_injection.nim) | Shellcode execution via suspended thread injection |
 ## Examples that are a WIP
 
 | File | Description |
