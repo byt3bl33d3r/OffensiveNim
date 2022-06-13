@@ -87,6 +87,9 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [list_remote_shares.nim](../master/src/list_remote_shares.nim) | Use NetShareEnum to list the share accessible by the current user |
 | [chrome_dump_bin.nim](../master/src/chrome_dump_bin.nim) | Read and decrypt cookies from Chrome's sqlite database|
 | [suspended_thread_injection.nim](../master/src/suspended_thread_injection.nim) | Shellcode execution via suspended thread injection |
+| [dns_exfiltrate.nim](../master/src/dns_exfiltrate.nim) | Simple DNS exfiltration via TXT record queries |
+
+
 ## Examples that are a WIP
 
 | File | Description |
@@ -335,3 +338,4 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 - [@frknayar](https://twitter.com/frknayar)
 - [@OffenseTeacher](https://twitter.com/OffenseTeacher)
 - [@fkadibs](https://twitter.com/fkadibs)
+- [@HuskyHacksMK](https://twitter.com/HuskyHacksMK)
