@@ -59,6 +59,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [self_delete_bin.nim](../master/src/self_delete_bin.nim) | A way to delete a locked or current running executable on disk. Method discovered by [@jonasLyk](https://twitter.com/jonasLyk/status/1350401461985955840) |
 | [encrypt_decrypt_bin.nim](../master/src/encrypt_decrypt_bin.nim) | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
 | [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
+| [amsi_providerpatch_bin.nim](../master/src/amsi_providerpatch_bin.nim) | Patches the AMSI Provider DLL (in this case MpOav.dll) to bypass AMSI. Published [here](https://i.blackhat.com/Asia-22/Friday-Materials/AS-22-Korkos-AMSI-and-Bypass.pdf) |
 | [etw_patch_bin.nim](../master/src/etw_patch_bin.nim) | Patches ETW out of the current process (Contributed by ) |
 | [wmiquery_bin.nim](../master/src/wmiquery_bin.nim) | Queries running processes and installed AVs using using WMI |
 | [out_compressed_dll_bin.nim](../master/src/out_compressed_dll_bin.nim) | Compresses, Base-64 encodes and outputs PowerShell code to load a managed dll in memory. Port of the orignal PowerSploit script to Nim. |
