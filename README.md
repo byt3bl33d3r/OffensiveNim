@@ -89,7 +89,8 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [chrome_dump_bin.nim](../master/src/chrome_dump_bin.nim) | Read and decrypt cookies from Chrome's sqlite database|
 | [suspended_thread_injection.nim](../master/src/suspended_thread_injection.nim) | Shellcode execution via suspended thread injection |
 | [dns_exfiltrate.nim](../master/src/dns_exfiltrate.nim) | Simple DNS exfiltration via TXT record queries |
-
+| [rsrc_section_shellcode.nim](../master/src/rsrc_section_shellcode.nim) | Execute shellcode embedded in the .rsrc section of the binary |
+| [token_steal_cmd.nim](../master/src/token_steal_cmd.nim) | Steal a token/impersonate and then run a command | 
 
 ## Examples that are a WIP
 
