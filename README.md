@@ -10,7 +10,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 
 - [OffensiveNim](#offensivenim)
   * [Why Nim?](#why-nim)
-  * [Examples in this repo](#examples-in-this-repo)
+  * [Examples in this repo](#examples-in-this-repo-that-work)
   * [Compiling the examples](#compiling-the-examples-in-this-repo)
     + [Easy Way (Recommended)](#easy-way-recommended)
     + [Hard Way (For the Bold)](#hard-way-for-the-bold)
@@ -358,12 +358,8 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 
 ## Contributors 
 
-- [@ShitSecure](https://twitter.com/ShitSecure)
-- [@VVX7](https://twitter.com/VV_X_7)
-- [@checkymander](https://twitter.com/checkymander)
-- Kiran Patel
-- [@frknayar](https://twitter.com/frknayar)
-- [@OffenseTeacher](https://twitter.com/OffenseTeacher)
-- [@fkadibs](https://twitter.com/fkadibs)
-- [@HuskyHacksMK](https://twitter.com/HuskyHacksMK)
-- And many more ❤️ for a full list see commit history.
+Virtual hug to everyone who contributed ❤️
+
+<a href="https://github.com/byt3bl33d3r/OffensiveNim/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=byt3bl33d3r/OffensiveNim" />
+</a>
