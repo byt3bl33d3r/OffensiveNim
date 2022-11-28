@@ -3,7 +3,7 @@
     License: BSD 3-Clause
 
     Compile:
-        nim c -d:mingw --cpu=amd64 --app=console simpleAntiAnalysis.nim
+        nim c -d:mingw --cpu=amd64 --app=console anti_analysis_isdebuggerpresent.nim
 ]#
 
 import winim
