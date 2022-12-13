@@ -91,6 +91,8 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [dns_exfiltrate.nim](../master/src/dns_exfiltrate.nim) | Simple DNS exfiltration via TXT record queries |
 | [rsrc_section_shellcode.nim](../master/src/rsrc_section_shellcode.nim) | Execute shellcode embedded in the .rsrc section of the binary |
 | [token_steal_cmd.nim](../master/src/token_steal_cmd.nim) | Steal a token/impersonate and then run a command | 
+| [anti_analysis_isdebuggerpresent.nim](../master/src/anti_analysis_isdebuggerpresent.nim) | Simple anti-analysis that checks for a debugger | 
+
 
 ## Examples that are a WIP
 
@@ -199,7 +201,7 @@ nim c -d=mingw --app=lib --nomain --cpu=amd64 mynim.dll
 ### Creating XLLs
 You can make an XLL (an Excel DLL, imagine that) with an auto open function that can be used for payload delivery. The following code creates a simple for an XLL that has an auto open function and all other boilerplate code needed to compile as a link library. The POC compiles as a DLL, you can then change the extension to .xll and it will open in Excel and run the payload when double clicked:
 
-```
+```nim
 #[
     Compile:
         nim c -d=mingw --app=lib --nomain --cpu=amd64 nim_xll.nim
