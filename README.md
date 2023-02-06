@@ -92,6 +92,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [rsrc_section_shellcode.nim](../master/src/rsrc_section_shellcode.nim) | Execute shellcode embedded in the .rsrc section of the binary |
 | [token_steal_cmd.nim](../master/src/token_steal_cmd.nim) | Steal a token/impersonate and then run a command | 
 | [anti_analysis_isdebuggerpresent.nim](../master/src/anti_analysis_isdebuggerpresent.nim) | Simple anti-analysis that checks for a debugger | 
+| [sandbox_domain_check.nim](../master/src/sandbox_domain_check.nim) | Simple sandbox evasion technique, that checks if computer is connected to domain or not | 
 
 
 ## Examples that are a WIP
