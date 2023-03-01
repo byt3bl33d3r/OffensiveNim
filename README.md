@@ -10,7 +10,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 
 - [OffensiveNim](#offensivenim)
   * [Why Nim?](#why-nim)
-  * [Examples in this repo](#examples-in-this-repo)
+  * [Examples in this repo](#examples-in-this-repo-that-work)
   * [Compiling the examples](#compiling-the-examples-in-this-repo)
     + [Easy Way (Recommended)](#easy-way-recommended)
     + [Hard Way (For the Bold)](#hard-way-for-the-bold)
@@ -59,6 +59,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [self_delete_bin.nim](../master/src/self_delete_bin.nim) | A way to delete a locked or current running executable on disk. Method discovered by [@jonasLyk](https://twitter.com/jonasLyk/status/1350401461985955840) |
 | [encrypt_decrypt_bin.nim](../master/src/encrypt_decrypt_bin.nim) | Encryption/Decryption using AES256 (CTR Mode) using the [Nimcrypto](https://github.com/cheatfate/nimcrypto) library |
 | [amsi_patch_bin.nim](../master/src/amsi_patch_bin.nim) | Patches AMSI out of the current process |
+| [amsi_providerpatch_bin.nim](../master/src/amsi_providerpatch_bin.nim) | Patches the AMSI Provider DLL (in this case MpOav.dll) to bypass AMSI. Published [here](https://i.blackhat.com/Asia-22/Friday-Materials/AS-22-Korkos-AMSI-and-Bypass.pdf) |
 | [etw_patch_bin.nim](../master/src/etw_patch_bin.nim) | Patches ETW out of the current process (Contributed by ) |
 | [wmiquery_bin.nim](../master/src/wmiquery_bin.nim) | Queries running processes and installed AVs using using WMI |
 | [out_compressed_dll_bin.nim](../master/src/out_compressed_dll_bin.nim) | Compresses, Base-64 encodes and outputs PowerShell code to load a managed dll in memory. Port of the orignal PowerSploit script to Nim. |
@@ -88,6 +89,10 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [chrome_dump_bin.nim](../master/src/chrome_dump_bin.nim) | Read and decrypt cookies from Chrome's sqlite database|
 | [suspended_thread_injection.nim](../master/src/suspended_thread_injection.nim) | Shellcode execution via suspended thread injection |
 | [dns_exfiltrate.nim](../master/src/dns_exfiltrate.nim) | Simple DNS exfiltration via TXT record queries |
+| [rsrc_section_shellcode.nim](../master/src/rsrc_section_shellcode.nim) | Execute shellcode embedded in the .rsrc section of the binary |
+| [token_steal_cmd.nim](../master/src/token_steal_cmd.nim) | Steal a token/impersonate and then run a command | 
+| [anti_analysis_isdebuggerpresent.nim](../master/src/anti_analysis_isdebuggerpresent.nim) | Simple anti-analysis that checks for a debugger | 
+| [sandbox_domain_check.nim](../master/src/sandbox_domain_check.nim) | Simple sandbox evasion technique, that checks if computer is connected to domain or not | 
 
 
 ## Examples that are a WIP
@@ -197,7 +202,7 @@ nim c -d=mingw --app=lib --nomain --cpu=amd64 mynim.dll
 ### Creating XLLs
 You can make an XLL (an Excel DLL, imagine that) with an auto open function that can be used for payload delivery. The following code creates a simple for an XLL that has an auto open function and all other boilerplate code needed to compile as a link library. The POC compiles as a DLL, you can then change the extension to .xll and it will open in Excel and run the payload when double clicked:
 
-```
+```nim
 #[
     Compile:
         nim c -d=mingw --app=lib --nomain --cpu=amd64 nim_xll.nim
@@ -356,11 +361,8 @@ var buf: array[5, byte] = [byte 0xfc,0x48,0x81,0xe4,0xf0,0xff]
 
 ## Contributors 
 
-- [@ShitSecure](https://twitter.com/ShitSecure)
-- [@VVX7](https://twitter.com/VV_X_7)
-- [@checkymander](https://twitter.com/checkymander)
-- Kiran Patel
-- [@frknayar](https://twitter.com/frknayar)
-- [@OffenseTeacher](https://twitter.com/OffenseTeacher)
-- [@fkadibs](https://twitter.com/fkadibs)
-- [@HuskyHacksMK](https://twitter.com/HuskyHacksMK)
+Virtual hug to everyone who contributed ❤️
+
+<a href="https://github.com/byt3bl33d3r/OffensiveNim/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=byt3bl33d3r/OffensiveNim" />
+</a>
