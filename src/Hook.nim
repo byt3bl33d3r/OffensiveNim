@@ -1,3 +1,8 @@
+#[
+    Author: Fabian Mosch, Twitter: @ShitSecure
+    License: BSD 3-Clause
+]#
+
 import winim
 
 type
