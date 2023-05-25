@@ -2,8 +2,6 @@ when not defined(windows):
     {.error: "This module is only supported on Windows".}
 
 # Import required libs
-import json
-import tables
 import strutils
 import strformat
 
