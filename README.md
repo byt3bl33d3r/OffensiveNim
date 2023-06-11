@@ -9,26 +9,29 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 ## Table of Contents
 
 - [OffensiveNim](#offensivenim)
-  * [Why Nim?](#why-nim)
-  * [Examples in this repo](#examples-in-this-repo-that-work)
-  * [Compiling the examples](#compiling-the-examples-in-this-repo)
-    + [Easy Way (Recommended)](#easy-way-recommended)
-    + [Hard Way (For the Bold)](#hard-way-for-the-bold)
-  * [Cross Compiling](#cross-compiling)
-  * [Interfacing with C/C++](#interfacing-with-cc)
-  * [Creating Windows DLLs with an exported DllMain](#creating-windows-dlls-with-an-exported-dllmain)
-  * [Optimizing executables for size](#optimizing-executables-for-size)
-  * [Reflectively Loading Nim Executables](#reflectively-loading-nim-executables)
-  * [Executable size difference with the Winim Library](#executable-size-difference-when-using-the-winim-library-vs-without)
-  * [Opsec Considirations](#opsec-considerations)
-  * [Converting C Code to Nim](#converting-c-code-to-nim)
-  * [Language Bridges](#language-bridges)
-  * [Debugging](#debugging)
-  * [Setting up a dev environment](#setting-up-a-dev-environment)
-  * [Pitfalls I found myself falling into](#pitfalls-i-found-myself-falling-into)
-  * [Interesting Nim Libraries](#interesting-nim-libraries)
-  * [Nim for Implant Dev Links](#nim-for-implant-dev-links)
-  * [Contributors](#contributors)
+  - [Table of Contents](#table-of-contents)
+  - [Why Nim?](#why-nim)
+  - [Examples in this repo that work](#examples-in-this-repo-that-work)
+  - [Examples that are a WIP](#examples-that-are-a-wip)
+  - [Compiling the examples in this repo](#compiling-the-examples-in-this-repo)
+    - [Easy Way (Recommended)](#easy-way-recommended)
+    - [Hard way (For the bold)](#hard-way-for-the-bold)
+  - [Cross Compiling](#cross-compiling)
+  - [Interfacing with C/C++](#interfacing-with-cc)
+  - [Creating Windows DLLs with an exported `DllMain`](#creating-windows-dlls-with-an-exported-dllmain)
+    - [Creating XLLs](#creating-xlls)
+  - [Optimizing executables for size](#optimizing-executables-for-size)
+  - [Reflectively Loading Nim Executables](#reflectively-loading-nim-executables)
+  - [Executable size difference when using the Winim library vs without](#executable-size-difference-when-using-the-winim-library-vs-without)
+  - [Opsec Considerations](#opsec-considerations)
+  - [Converting C code to Nim](#converting-c-code-to-nim)
+  - [Language Bridges](#language-bridges)
+  - [Debugging](#debugging)
+  - [Setting up a dev environment](#setting-up-a-dev-environment)
+  - [Pitfalls I found myself falling into](#pitfalls-i-found-myself-falling-into)
+  - [Interesting Nim libraries](#interesting-nim-libraries)
+  - [Nim for implant dev links](#nim-for-implant-dev-links)
+  - [Contributors](#contributors)
 
 ## Why Nim?
 
@@ -68,6 +71,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [shellcode_bin.nim](../master/src/shellcode_bin.nim) | Creates a suspended process and injects shellcode with `VirtualAllocEx`/`CreateRemoteThread`. Also demonstrates the usage of compile time definitions to detect arch, os etc..|
 | [shellcode_fiber.nim](../master/src/shellcode_fiber.nim) | Shellcode execution via fibers |
 | [shellcode_inline_asm_bin.nim](../master/src/shellcode_inline_asm_bin.nim) | Executes shellcode using inline assembly |
+| [ssdt_dump.nim](../master/src/ssdt_dump.nim) | Simple SSDT retrieval using runtime function table from exception directory. Technique inspired from [MDSEC](https://www.mdsec.co.uk/2022/04/resolving-system-service-numbers-using-the-exception-directory/) article |
 | [syscalls_bin.nim](../master/src/syscalls_bin.nim) | Shows how to make direct system calls |
 | [execute_powershell_bin.nim](../master/src/execute_powershell_bin.nim) | Hosts the CLR & executes PowerShell through an un-managed runspace |
 | [passfilter_lib.nim](../master/src/passfilter_lib.nim) | Log password changes to a file by (ab)using a password complexity filter |
