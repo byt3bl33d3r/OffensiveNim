@@ -6,7 +6,7 @@
 type
     HANDLE* = int
     HWND* = HANDLE
-    UINT* = int32
+    UINT* = uint32
     LPCSTR* = cstring
 
 proc MessageBox*(hWnd: HWND, lpText: LPCSTR, lpCaption: LPCSTR, uType: UINT): int32 
