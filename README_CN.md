@@ -119,7 +119,7 @@ E.g. `nim c -d=mingw --app=console --cpu=amd64 source.nim`
 type
     HANDLE* = int
     HWND* = HANDLE
-    UINT* = int32
+    UINT* = uint32
     LPCSTR* = cstring
 
 proc MessageBox*(hWnd: HWND, lpText: LPCSTR, lpCaption: LPCSTR, uType: UINT): int32 

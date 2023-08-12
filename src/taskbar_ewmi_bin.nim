@@ -40,7 +40,7 @@ proc GetProcessByName(process_name: string): DWORD =
 type
     HANDLE* = int
     HWND* = HANDLE
-    UINT* = int32
+    UINT* = uint32
     LPWSTR = ptr WCHAR
     CImpWndProc = object
         pfnAddRef, pfnRelease, pfnWndProc: int
