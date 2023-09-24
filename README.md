@@ -98,6 +98,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [anti_analysis_isdebuggerpresent.nim](../master/src/anti_analysis_isdebuggerpresent.nim) | Simple anti-analysis that checks for a debugger | 
 | [sandbox_domain_check.nim](../master/src/sandbox_domain_check.nim) | Simple sandbox evasion technique, that checks if computer is connected to domain or not |
 | [Hook.nim](../master/src/Hook.nim) | Offensive Hooking example for MessageBoxA | 
+| [anti_debug.nim](../master/src/anti_debug.nim) | Showcasing two anti debugging techniques | 
 
 
 ## Examples that are a WIP
