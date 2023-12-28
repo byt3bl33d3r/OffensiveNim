@@ -3,7 +3,6 @@
     License: BSD 3-Clause
 ]#
 
-import winim
 import winim/lean
 
 proc executeLocally(shellcode: openArray[byte]): void =
