@@ -12,7 +12,6 @@ import winim/lean
 #include <Windows.h>
 #include <stdio.h>
 #define _CRTALLOC(x) __attribute__((section(x)))
-extern int main(int argc, char** args, char** env);
 """.}
 
 {.passC:"-masm=intel".}
