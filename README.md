@@ -24,6 +24,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
   - [Reflectively Loading Nim Executables](#reflectively-loading-nim-executables)
   - [Executable size difference when using the Winim library vs without](#executable-size-difference-when-using-the-winim-library-vs-without)
   - [Opsec Considerations](#opsec-considerations)
+  - [Writing Nim without the Nim Runtime](#writing-nim-without-the-nim-runtime)
   - [Converting C code to Nim](#converting-c-code-to-nim)
   - [Language Bridges](#language-bridges)
   - [Debugging](#debugging)
@@ -290,6 +291,12 @@ Because of how Nim resolves DLLs dynamically using `LoadLibrary` using it's FFI 
 If you compile Nim source to a DLL, seems like you'll always have an exported `NimMain`, no matter if you specify your own `DllMain` or not (??). This could potentially be used as a signature, don't know how many shops are actually using Nim in their development stack. Definitely stands out.
 
 ![](https://user-images.githubusercontent.com/5151193/99911079-4563cf00-2caf-11eb-960d-e500534b56dd.png)
+
+## Writing Nim without the Nim Runtime
+
+Since Nim is heavily flagged by Anti-Virus solutions, one way around this is writing Nim programs without the Nim runtime. [Writing Nim-less Nim](https://www.youtube.com/watch?v=EXX3HmCG3pw) is a talk given on the steps outlining how to write Nim code without the Nim and C runtime, source code from this talk is available [here](https://github.com/m4ul3r/writing_nimless). The talk follows and expands on [zimawhit3's](https://github.com/zimawhit3) work with [Bitmancer](https://github.com/zimawhit3/Bitmancer/tree/main).
+
+The premise is to rely on `winim`'s type definitions and leverage code writing that would not result in Nim's runtime being used. 
 
 ## Converting C code to Nim
 
