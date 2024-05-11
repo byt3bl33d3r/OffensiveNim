@@ -102,6 +102,7 @@ My experiments in weaponizing [Nim](https://nim-lang.org/) for implant developme
 | [anti_debug.nim](../master/src/anti_debug.nim) | Showcasing two anti debugging techniques | 
 | [anti_debug_via_tls.nim](../master/src/anti_debug_via_tls.nim) | Anti-debugging vis TLS |
 | [local_pe_execution.nim](../master/src/local_pe_execution.nim) | Execute exe and dll files in memory | 
+| [stack_string_allocation.nim](../master/src/stack_string_allocation.nim) | Allocate c and wide strings on the stack using arrays | 
 
 
 ## Examples that are a WIP
